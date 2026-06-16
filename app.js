@@ -118,7 +118,7 @@ function pillarAvg(pillarKey){
 function bandFor(avg){ return CONFIG.bands.find(b => avg <= b.upTo) || CONFIG.bands[CONFIG.bands.length-1]; }
 function show(id){ ['intro-screen','quiz-screen','pillar-result-screen','results-screen']
   .forEach(s => { const el = document.getElementById(s); if (el) el.classList.toggle('hidden', s !== id); });
-  document.body.classList.toggle('hero-collapsed', id === 'results-screen' || id === 'pillar-result-screen'); }
+  document.body.classList.toggle('hero-collapsed', id === 'results-screen' || id === 'pillar-result-screen' || id === 'quiz-screen'); }
 
 /* ---------- injected styles, pillar-result screen, footer ---------- */
 (function inject(){
@@ -234,14 +234,15 @@ function renderQ(){
   const gi = runQs[runPos];
   const q = CONFIG.questions[gi];
   const p = pillarByKey(runPillar);
-  document.getElementById('progress-bar').style.width = (runPos / runQs.length) * 100 + '%';
+  const answeredCount = Object.keys(answers).length;
+  document.getElementById('progress-bar').style.width = Math.max(2, (answeredCount / CONFIG.questions.length) * 100) + '%';
   document.getElementById('step-label').textContent =
     `${p.name} · question ${runPos+1} of ${runQs.length}`;
   const chosen = answers[qid(gi)];
   document.getElementById('question-container').innerHTML = `
     <div class="question-card entering">
       <span class="pillar-tag">${p.name}</span>
-      <div class="question-text" id="q-text-${gi}">${q.text}</div>
+      <div class="question-text" id="q-text-${gi}" tabindex="-1">${q.text}</div>
       <div class="options" role="radiogroup" aria-labelledby="q-text-${gi}">
         ${q.options.map((o,i) => `
           <button type="button" class="option-btn ${chosen===i?'selected':''}" role="radio" aria-checked="${chosen===i}" onclick="selectOpt(${i})">
@@ -252,6 +253,9 @@ function renderQ(){
   const pb = document.getElementById('prev-btn');
   pb.style.visibility = 'visible';
   pb.textContent = runPos===0 ? '← Overview' : '← Back';
+  // move focus to the new question so keyboard and screen-reader users follow the auto-advance
+  const qt = document.getElementById(`q-text-${gi}`);
+  if (qt) qt.focus({ preventScroll: true });
 }
 function selectOpt(i){
   if (advancing) return;
@@ -636,12 +640,13 @@ function renderDecisionSnapshot(avgs){
 function renderResultsToolbar(){
   const host = document.getElementById('results-toolbar');
   if (!host) return;
-  const sketchLabel = hoverCapable ? 'Drag nodes to sketch' : 'Tap chart to sketch';
+  // the sketch interaction is only wired on hover-capable (pointer) devices, so only hint at it there
+  const sketchHint = hoverCapable ? '<span class="toolbar-hint">Drag nodes to sketch</span>' : '';
   host.innerHTML = `
     <div class="results-toolbar" role="toolbar" aria-label="Results actions">
       <button type="button" class="btn btn-ghost toolbar-btn" onclick="copyResultsSummary()">Copy summary</button>
       <button type="button" class="btn btn-ghost toolbar-btn" onclick="window.print()">Print / save PDF</button>
-      <span class="toolbar-hint">${sketchLabel}</span>
+      ${sketchHint}
     </div>`;
 }
 
@@ -743,6 +748,13 @@ function showResults(){
 
   show('results-screen');
 
+  // text alternative so screen readers get the chart's meaning, not just an empty canvas
+  const radarCanvas = document.getElementById('radarChart');
+  radarCanvas.setAttribute('role', 'img');
+  radarCanvas.setAttribute('aria-label',
+    'Radar chart of your five pillar scores out of ' + CONFIG.scale.max + ': ' +
+    CONFIG.pillars.map(p => p.name + ' ' + avgs[p.key].toFixed(1)).join(', ') + '.');
+
   renderDecisionSnapshot(avgs);
   renderResultsToolbar();
 
@@ -768,6 +780,7 @@ function showResults(){
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       layout: { padding: 4 },
       onHover: (evt, els) => { evt.native.target.style.cursor = els.length ? 'pointer' : 'default'; },
       onClick: (evt, els) => {
@@ -845,6 +858,19 @@ function submitEmail(){
 
 function restartQuiz(){ startFresh(); }
 function startQuiz(){ startFullRun(); }
+
+/* ---------- keyboard shortcuts: 1-4 or A-D to answer while in the quiz ---------- */
+document.addEventListener('keydown', (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const quiz = document.getElementById('quiz-screen');
+  if (!quiz || quiz.classList.contains('hidden')) return;
+  const btns = document.querySelectorAll('#question-container .option-btn');
+  if (!btns.length) return;
+  let idx = -1;
+  if (e.key >= '1' && e.key <= '9') idx = parseInt(e.key, 10) - 1;
+  else if (/^[a-zA-Z]$/.test(e.key)) idx = e.key.toLowerCase().charCodeAt(0) - 97;
+  if (idx >= 0 && idx < btns.length) { e.preventDefault(); selectOpt(idx); }
+});
 
 /* ---------- init ---------- */
 (async function init(){
