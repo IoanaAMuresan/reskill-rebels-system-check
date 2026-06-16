@@ -768,7 +768,6 @@ function showResults(){
     },
     options: {
       responsive: true,
-      maintainAspectRatio: false,
       layout: { padding: 4 },
       onHover: (evt, els) => { evt.native.target.style.cursor = els.length ? 'pointer' : 'default'; },
       onClick: (evt, els) => {
