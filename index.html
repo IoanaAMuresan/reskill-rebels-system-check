@@ -3,19 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rebel OS System Check (Prototype v3) — Reskill Rebels</title>
+  <title>Rebel OS System Check - Reskill Rebels</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
 <body>
-  <div class="prototype-ribbon">
-    Prototype v3 — modular build · <a href="../compare.html">Compare versions</a> ·
-    <a href="?demo=results">Jump to sample results</a>
-  </div>
   <div class="container">
-  <header>    <div class="logo-badge">Reskill Rebels</div>    <h1>Rebel OS<span>System Check</span></h1>    <p>Five pillars. About 15 minutes in one sitting - or take it pillar by pillar. A personalised picture of where your professional OS is running strong - and where the upgrade is most needed.</p>  </header>  <!-- INTRO -->  <div id="intro-screen">    <div class="intro-pillars" id="intro-pillars"></div>    <p class="time-note" id="time-note"></p>    <button class="btn btn-primary" onclick="startQuiz()" style="padding:0.85rem 2.4rem;font-size:0.95rem;">Run My System Check →</button>  </div>  <!-- QUIZ -->  <div id="quiz-screen" class="hidden">    <div id="progress-bar-wrap"><div id="progress-bar"></div></div>    <div id="step-label"></div>    <div id="question-container"></div>    <div class="nav-row">      <button class="btn btn-ghost" id="prev-btn" onclick="prevQuestion()">← Back</button>      <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()" disabled>Next →</button>    </div>  </div>  <!-- RESULTS -->  <div id="results-screen" class="hidden">    <h2>Your Rebel OS <span>Profile</span></h2>    <p class="results-subtitle">Here's where you are right now - highs, lows, and all.</p>
+  <header>    <img class="logo-img" src="logo.png" alt="Reskill Rebels" />    <h1>Rebel OS<span>System Check</span></h1>    <p>Five pillars. About 15 minutes in one sitting - or take it pillar by pillar. A personalised picture of where your professional OS is running strong - and where the upgrade is most needed.</p>  </header>  <!-- INTRO -->  <div id="intro-screen">    <div class="intro-pillars" id="intro-pillars"></div>    <p class="time-note" id="time-note"></p>    <button class="btn btn-primary" onclick="startQuiz()" style="padding:0.85rem 2.4rem;font-size:0.95rem;">Run My System Check →</button>  </div>  <!-- QUIZ -->  <div id="quiz-screen" class="hidden">    <div id="progress-bar-wrap"><div id="progress-bar"></div></div>    <div id="step-label"></div>    <div id="question-container"></div>    <div class="nav-row">      <button class="btn btn-ghost" id="prev-btn" onclick="prevQuestion()">← Back</button>      <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()" disabled>Next →</button>    </div>  </div>  <!-- RESULTS -->  <div id="results-screen" class="hidden">    <h2>Your Rebel OS <span>Profile</span></h2>    <p class="results-subtitle">Here's where you are right now - highs, lows, and all.</p>
     <div id="results-toolbar"></div>
     <p class="time-note" id="disclaimer" style="max-width:560px;margin:-1rem auto 1.2rem;"></p>    <div id="decision-snapshot-container"></div>
     <div class="radar-wrap">      <canvas id="radarChart"></canvas>    </div>    <div id="profile-badge-container"></div>

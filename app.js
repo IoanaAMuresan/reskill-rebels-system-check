@@ -650,7 +650,7 @@ function buildResultsSummary(avgs){
   const profile = CONFIG.profiles.find(p => overall <= p.upTo) || CONFIG.profiles[CONFIG.profiles.length-1];
   const snap = upgradeSnapshot(avgs);
   const lines = [
-    'Rebel OS System Check — Results',
+    'Rebel OS System Check - Results',
     `Profile: ${profile.name}`,
     '',
     snap.headline,
