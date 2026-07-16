@@ -16,8 +16,7 @@ jobs:
         run: |
           status=$(curl -s -o /tmp/response.txt -w '%{http_code}' \
             "$SUPABASE_URL/rest/v1/score_submissions?select=id&limit=1" \
-            -H "apikey: $SUPABASE_KEY" \
-            -H "Authorization: Bearer $SUPABASE_KEY")
+            -H "apikey: $SUPABASE_KEY")
 
           echo "HTTP status: $status"
           echo "Response body:"
