@@ -1,4 +1,5 @@
 const LETTERS = ['A','B','C','D','E','F','G','H'];
+let isDemoRun = false;
 let answers = {};
 let runQueue = [];
 let runPillar = null;
@@ -56,6 +57,7 @@ function sourceTag(){
 }
 
 async function submitScores(avgs){
+  if (isDemoRun) return; // demo/seeded runs are never real data - never written
   // Guard: one submission per completed run per browser, keyed to version.
   // Refreshing the results page, or returning later, does NOT re-send.
   const already = await storeGet(SUBMITTED_KEY);
@@ -874,9 +876,10 @@ document.addEventListener('keydown', (e) => {
 /* ---------- init ---------- */
 (async function init(){
   const params = new URLSearchParams(window.location.search);
-  if (params.get('demo') === 'results') {
+  const isLiveDomain = window.location.hostname === 'systemcheck.reskillrebels.com';
+  if (params.get('demo') === 'results' && !isLiveDomain) {
+    isDemoRun = true;
     seedDemoAnswers();
-    await saveState();
     showResults();
     return;
   }
