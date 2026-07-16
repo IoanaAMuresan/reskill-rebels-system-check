@@ -28,6 +28,7 @@ header p {  font-size: 0.95rem;  font-weight: 300;  color: var(--text-muted);  m
 .option-letter {  font-family: 'Barlow Condensed', sans-serif;  font-weight: 700;  color: var(--orange);  font-size: 0.82rem;  min-width: 1.1rem;  margin-top: 2px;}
 .nav-row {  display: flex;  justify-content: space-between;  align-items: center;  margin-top: 1.6rem;  gap: 1rem;}
 .btn {  font-family: 'Barlow Condensed', sans-serif;  font-size: 0.82rem;  font-weight: 700;  letter-spacing: 0.1em;  text-transform: uppercase;  padding: 0.6rem 1.5rem;  border-radius: 4px;  cursor: pointer;  border: none;  transition: all 0.2s;  text-decoration: none;  display: inline-block;}
+.btn:focus-visible { outline: 2px solid var(--orange-light); outline-offset: 2px; }
 .btn-primary { background: var(--orange); color: white; }
 .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
 .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
