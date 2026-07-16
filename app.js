@@ -1,5 +1,7 @@
 const LETTERS = ['A','B','C','D','E','F','G','H'];
 let isDemoRun = false;
+let lastProfileName = null;
+let lastUpgradePillarName = null;
 let answers = {};
 let runQueue = [];
 let runPillar = null;
@@ -745,6 +747,10 @@ function showResults(){
   const overall = CONFIG.pillars.reduce((s,p) => s+avgs[p.key], 0) / CONFIG.pillars.length;
   const profile = CONFIG.profiles.find(p => overall <= p.upTo) || CONFIG.profiles[CONFIG.profiles.length-1];
 
+  lastProfileName = profile.name;
+  lastUpgradePillarName = upgradeSnapshot(avgs).upgrade.p.name;
+  resetEmailCaptureForm();
+
   submitScores(avgs); // fire-and-forget anonymous row; guarded against repeats
 
   show('results-screen');
@@ -849,12 +855,86 @@ function showResults(){
   if (dc) dc.textContent = CONFIG.disclaimer;
 }
 
-function submitEmail(){
-  const email = document.getElementById('email-input').value.trim();
-  if (!email || !email.includes('@')){ document.getElementById('email-input').style.borderColor = '#ff5555'; return; }
-  // Kit: replace data-form with your ConvertKit form id when ready.
-  document.getElementById('email-success').style.display = 'block';
-  document.getElementById('email-input').disabled = true;
+const KIT_FORM_ENDPOINT = 'https://app.kit.com/forms/9691240/subscriptions';
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function setEmailFormError(msg){
+  const errorEl = document.getElementById('email-form-error');
+  if (!msg){ errorEl.textContent = ''; errorEl.classList.add('hidden'); return; }
+  errorEl.textContent = msg;
+  errorEl.classList.remove('hidden');
+}
+
+function resetEmailCaptureForm(){
+  const emailInput = document.getElementById('email-input');
+  const consentInput = document.getElementById('email-consent');
+  const successEl = document.getElementById('email-success');
+  const btn = document.getElementById('email-submit-btn');
+  if (!emailInput) return;
+  emailInput.value = '';
+  emailInput.disabled = false;
+  emailInput.removeAttribute('aria-invalid');
+  consentInput.checked = false;
+  consentInput.disabled = false;
+  successEl.classList.add('hidden');
+  btn.classList.remove('hidden');
+  btn.disabled = false;
+  btn.textContent = 'Send It →';
+  setEmailFormError('');
+}
+
+async function submitEmail(evt){
+  if (evt) evt.preventDefault();
+  const emailInput = document.getElementById('email-input');
+  const consentInput = document.getElementById('email-consent');
+  const successEl = document.getElementById('email-success');
+  const btn = document.getElementById('email-submit-btn');
+  const email = emailInput.value.trim();
+
+  setEmailFormError('');
+  emailInput.setAttribute('aria-invalid', 'false');
+
+  if (!EMAIL_RE.test(email) || !emailInput.checkValidity()){
+    emailInput.setAttribute('aria-invalid', 'true');
+    setEmailFormError('Enter a valid email address.');
+    emailInput.focus();
+    return;
+  }
+  if (!consentInput.checked){
+    setEmailFormError("Please tick the box so I know it's okay to send your brief.");
+    consentInput.focus();
+    return;
+  }
+
+  const prevLabel = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  try {
+    const res = await fetch(KIT_FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        email_address: email,
+        fields: {
+          profile_name: lastProfileName || '',
+          first_upgrade_pillar: lastUpgradePillarName || ''
+        }
+      })
+    });
+    const data = await res.json().catch(() => null);
+    if (!res.ok || !data || data.status !== 'success'){
+      throw new Error((data && data.errors && data.errors.messages && data.errors.messages[0]) || 'Request failed');
+    }
+    successEl.classList.remove('hidden');
+    emailInput.disabled = true;
+    consentInput.disabled = true;
+    btn.classList.add('hidden');
+  } catch(e){
+    setEmailFormError("That didn't go through - please try again in a moment.");
+    btn.disabled = false;
+    btn.textContent = prevLabel;
+  }
 }
 
 function restartQuiz(){ startFresh(); }
