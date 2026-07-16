@@ -918,7 +918,8 @@ async function submitEmail(evt){
         email_address: email,
         fields: {
           profile_name: lastProfileName || '',
-          first_upgrade_pillar: lastUpgradePillarName || ''
+          first_upgrade_pillar: lastUpgradePillarName || '',
+          source: sourceTag()
         }
       })
     });
