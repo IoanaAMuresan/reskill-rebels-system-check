@@ -428,7 +428,7 @@ const CONFIG = {
         b1: "The same tools, the same way, for years - \"do I have to?\" included.",
         b2: "You use the standard tools competently. You know there's more available than you use. You explore deliberately rather than only when stuck.",
         b3: "Your digital environment is genuinely set up to support how you work. You use tools at a level that creates real efficiency and quality. You're the person others ask when they're stuck on how to do something.",
-        b4: "You move comfortably across tools and contexts. New tools don't disorient you - they're interesting problems. You help others develop their tooling confidence, and you create environments where experimentation with new tools is normal rather than scary.￼" } },
+        b4: "You move comfortably across tools and contexts. New tools don't disorient you - they're interesting problems. You help others develop their tooling confidence, and you create environments where experimentation with new tools is normal rather than scary." } },
       c42: { name: "4.2 Data Thinking", bands: {
         b1: "Charts arrive with authority and mostly keep it - a number on a slide reads as settled.",
         b2: "You work with basic data in your domain. You can read a standard chart. You ask questions about what data is and isn't showing, rather than just accepting conclusions.",
@@ -438,7 +438,7 @@ const CONFIG = {
         b1: "They're not in your work yet - some mix of scepticism, noise, and other priorities.",
         b2: "You have a basic working familiarity with at least one AI tool. You form a calibrated view of what it's useful for and where it falls short.",
         b3: "You work with AI fluidly across multiple use cases. You know how to prompt effectively, how to evaluate outputs critically, and how to integrate AI into your workflow without losing your own judgment. You've found your genuine productivity multipliers.",
-        b4: "You help others develop a calibrated relationship with AI - neither scared nor credulous. You can have intelligent conversations about what AI means for your organisation, your team, your field - with specificity and nuance rather than hype or fear. You're part of the conversation about how AI gets used well in your context.￼" } },
+        b4: "You help others develop a calibrated relationship with AI - neither scared nor credulous. You can have intelligent conversations about what AI means for your organisation, your team, your field - with specificity and nuance rather than hype or fear. You're part of the conversation about how AI gets used well in your context." } },
       c44: { name: "4.4 Experimentation & Iteration", bands: {
         b1: "Waiting for the complete plan is the starting state - nothing ships until it's fully formed.",
         b2: "You run tests - pilots, trials, experiments by name - and mostly continue as before regardless of what they show. The motions are there; the adaptation isn't yet. The level turns when a result actually changes something.",
@@ -448,17 +448,17 @@ const CONFIG = {
         b1: "\"The system says\" still ends conversations - the output reads as fact.",
         b2: "You comply with the system's outputs, sometimes with a grumble, without yet evaluating them. The questions exist somewhere - \"what is this thing actually doing?\" Asking them out loud is the next step.",
         b3: "You work with automated systems critically and effectively. You know when to use them, when to question them, and when to override them. You can have an informed conversation about algorithmic bias, about what a model is and isn't appropriate for, about the limits of what any automated system can do.",
-        b4: "You shape how your organisation uses automated systems - building in the human oversight, the critical evaluation, the genuine questioning of what these systems are for and who they serve. That's increasingly important governance work, and it belongs to people who understand both the human and the technical side.￼" } },
+        b4: "You shape how your organisation uses automated systems - building in the human oversight, the critical evaluation, the genuine questioning of what these systems are for and who they serve. That's increasingly important governance work, and it belongs to people who understand both the human and the technical side." } },
       c46: { name: "4.6 Spotting the Business Value in the Tech", bands: {
         b1: "Shiny or irrelevant - the translation step missing in both.",
         b2: "You can describe what specific tools do and have a sense of where they might be useful in your context. The translation is rough - more \"this seems relevant\" than \"here's exactly what this would change.\"",
         b3: "You translate fluently in both directions - from technical capability to business value, and from organisational need to technical requirement. You're a useful bridge in conversations that otherwise get stuck on either side.",
-        b4: "You shape technology investment and adoption decisions by helping organisations understand what will actually move the needle versus what will create impressive activity. That's a form of strategic counsel that requires both technical and organisational intelligence - and not many people can do it well.￼" } },
+        b4: "You shape technology investment and adoption decisions by helping organisations understand what will actually move the needle versus what will create impressive activity. That's a form of strategic counsel that requires both technical and organisational intelligence - and not many people can do it well." } },
       c47: { name: "4.7 Playfulness with Tech", bands: {
         b1: "The curiosity got switched off somewhere along the way - tech gets used only as required.",
         b2: "You're allowing yourself to be curious about technology again - or maybe for the first time. You're trying things without a specific outcome in mind. The play is tentative but it's happening.",
         b3: "You have a genuinely exploratory relationship with technology. You spot unexpected use cases. You combine tools in interesting ways. People come to you with \"is there a way to do X\" because you're known to have a broader sense of what's possible.",
-        b4: "You create cultures of playful exploration - where teams feel safe experimenting, where \"I tried something and it didn't work\" is a normal Tuesday, where the unexpected discovery is celebrated. You model the disposition that makes technological fluency feel like opportunity rather than obligation.￼" } }
+        b4: "You create cultures of playful exploration - where teams feel safe experimenting, where \"I tried something and it didn't work\" is a normal Tuesday, where the unexpected discovery is celebrated. You model the disposition that makes technological fluency feel like opportunity rather than obligation." } }
     },
     sustainability: {
       c51: { name: "5.1 Energy & Attention Management", bands: {
@@ -490,7 +490,7 @@ const CONFIG = {
         b1: "Contact mostly happens when something's needed - the network is real, the support inside it thin.",
         b2: "You recognise misalignment - the feeling that the current situation isn't quite right, that your capabilities aren't being used well, that something needs to change. Naming it clearly is the first step.",
         b3: "You make strategic moves - not reactive ones. You have enough clarity about what you're building toward that you can evaluate opportunities against a direction, not just against the current situation.",
-        b4: "You shape your trajectory proactively. Movement isn't something that happens to you - it's something you design. At this level, career mobility is an active practice, not a crisis response.￼" } }
+        b4: "You shape your trajectory proactively. Movement isn't something that happens to you - it's something you design. At this level, career mobility is an active practice, not a crisis response." } }
     }
   },
 
