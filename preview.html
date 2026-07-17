@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
-  <title>Component Preview (throwaway) - Rebel OS System Check</title>
+  <title>Full Copy Preview (throwaway) - Rebel OS System Check</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
@@ -14,19 +14,30 @@
       text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.85rem;
       padding: 0.6rem 1rem;
     }
-    .preview-pillar-heading {
+    .preview-global-heading, .preview-pillar-heading {
       font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
       text-transform: uppercase; letter-spacing: 0.03em; font-size: 1.8rem;
       color: #fff; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem;
       border-bottom: 2px solid var(--orange);
     }
-    .preview-pillar-heading:first-child { margin-top: 0; }
+    .preview-global-heading:first-child { margin-top: 0; }
+    .preview-section-heading {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.85rem;
+      color: var(--orange); margin: 1.8rem 0 0.8rem;
+    }
     .preview-component-heading {
       font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.02em; font-size: 1rem;
       color: var(--orange-light); margin: 1.6rem 0 0.6rem;
     }
-    .preview-band-group { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.4rem; }
+    .preview-band-group, .preview-question-group { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.4rem; }
+    .preview-copy-row { margin-bottom: 0.9rem; }
+    .preview-copy-key {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
   </style>
 </head>
 <body>
@@ -35,15 +46,71 @@
 
   <script src="config.js"></script>
   <script>
+    const LETTERS = ['A', 'B', 'C', 'D'];
     const root = document.getElementById('preview-root');
+    const esc = s => (s || '').toString();
     let html = '';
 
+    // ---- Intro copy & disclaimer ----
+    html += `<h2 class="preview-global-heading">Intro &amp; Global Copy</h2>`;
+    html += `<div class="preview-copy-row"><div class="preview-copy-key">disclaimer</div><p class="time-note">${esc(CONFIG.disclaimer)}</p></div>`;
+    Object.keys(CONFIG.copy).forEach(key => {
+      html += `<div class="preview-copy-row"><div class="preview-copy-key">copy.${key}</div><p class="time-note">${esc(CONFIG.copy[key])}</p></div>`;
+    });
+
+    // ---- Profiles ----
+    html += `<h2 class="preview-global-heading">Profiles</h2>`;
+    CONFIG.profiles.forEach(profile => {
+      html += `
+        <div class="profile-badge" style="margin-bottom:1rem;">
+          <div class="profile-label">Your Rebel OS Profile · up to ${profile.upTo}</div>
+          <div class="profile-title">${esc(profile.name)}</div>
+          <div class="profile-desc">${esc(profile.desc)}</div>
+        </div>`;
+    });
+
+    // ---- Per-pillar: questions, reports, components ----
     CONFIG.pillars.forEach(pillar => {
       html += `<h2 class="preview-pillar-heading">${pillar.name}</h2>`;
+
+      // Questions
+      html += `<h3 class="preview-section-heading">Questions</h3><div class="preview-question-group">`;
+      CONFIG.questions.filter(q => q.pillar === pillar.key).forEach(q => {
+        const optionsHTML = q.options.map((o, i) =>
+          `<button type="button" class="option-btn" disabled><span class="option-letter">${LETTERS[i]}</span><span>${esc(o)}</span></button>`
+        ).join('');
+        html += `
+          <div class="question-card">
+            <span class="pillar-tag">${q.sub}</span>
+            <div class="question-text">${esc(q.text)}</div>
+            <div class="options">${optionsHTML}</div>
+          </div>`;
+      });
+      html += `</div>`;
+
+      // Pillar reports
+      html += `<h3 class="preview-section-heading">Pillar Report</h3><div class="preview-band-group">`;
+      CONFIG.bands.forEach(band => {
+        const rep = (CONFIG.reports[pillar.key] && CONFIG.reports[pillar.key][band.id]) || { read: '', nextStep: '' };
+        html += `
+          <div class="pillar-result-row">
+            <div class="pillar-result-header">
+              <span class="pillar-result-name">${pillar.name}</span>
+              <span class="pillar-result-version">${band.label}</span>
+            </div>
+            <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:${band.pct}%"></div></div>
+            <div class="pillar-insight">${esc(rep.read)}</div>
+            ${rep.nextStep ? `<div class="pillar-insight" style="font-style:normal;margin-top:0.3rem;"><span style="color:var(--orange, #E8602A);font-weight:700;">Next:</span> ${esc(rep.nextStep)}</div>` : ''}
+          </div>`;
+      });
+      html += `</div>`;
+
+      // Components
+      html += `<h3 class="preview-section-heading">Components</h3>`;
       const comps = CONFIG.components[pillar.key] || {};
       Object.keys(comps).forEach(key => {
         const comp = comps[key];
-        html += `<h3 class="preview-component-heading">${comp.name}</h3><div class="preview-band-group">`;
+        html += `<h4 class="preview-component-heading">${comp.name}</h4><div class="preview-band-group">`;
         CONFIG.bands.forEach(band => {
           const text = comp.bands[band.id] || '';
           html += `
@@ -53,7 +120,7 @@
                 <span class="pillar-result-version">${band.label}</span>
               </div>
               <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:${band.pct}%"></div></div>
-              <div class="pillar-insight">${text}</div>
+              <div class="pillar-insight">${esc(text)}</div>
             </div>`;
         });
         html += `</div>`;
