@@ -1,6 +1,6 @@
 const CONFIG = {
 
-  version: "prototype-v3",
+  version: "pilot-1",
 
   scale: { min: 1, max: 4 },
 
