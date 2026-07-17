@@ -36,6 +36,8 @@ No bravado. A first draft of the question rewrite overcorrected into "I pick fig
 
 No absolutes: "reflex", "even mid-crisis", "the only real test", "operating at the highest level", "that's rare", "the marker of a genuinely senior professional". These encourage overclaiming and make the top feel heroic. The instrument is one self-report question per component. It cannot carry a verdict.
 
+Scope: this ban polices competing options - the four answers a reader chooses between, where a flourish on one is a thumb on the scale. In profiles, reports, band texts, and intro copy, nothing is competing; an emphatic line there is judged only by rule 3's cold-reader test. ("Reflex" in a C option is fine. "That's rare" in a D option is not.)
+
 The discernment clause is usually what makes a top option work. Examples that landed:
 
 - "I can tell when saying it out loud helps, and when it just makes things about me"
@@ -54,6 +56,8 @@ This is not about lowering vocabulary. It is about not making a non-native reade
 Things that survived, on Ioana's ear: "another day at the office", "isn't really on the menu", "move the needle", "blur word", "a draft, not a tattoo". When in doubt, ask her rather than sanding off a good line.
 
 Where a term is worth keeping, let the sentence explain it rather than adding a gloss. Example: "I adapt eventually - usually once sunk cost has done its work: too far in to walk away now."
+
+Scope: the hard ban on load-bearing idiom applies to competing options, same reasoning as rule 2 - a joke or vivid idiom on one option nudges selection toward it. Everywhere else (profiles, reports, band texts, intro copy), the only test is whether the line is clear cold to a non-native reader. "And boy, will it" in a profile competes with nothing; judge it on clarity alone.
 
 ### 4. No back-references. Say the noun.
 
@@ -92,6 +96,8 @@ The pattern that works: the thing that makes you good at this is also the thing 
 This is the growth mindset applied to itself. It is also the book's argument: experience is an asset, and unexamined experience quietly expires. And it's the only honest way to give a high scorer something to do alone.
 
 Other legitimate directions for a top band: depth, unfamiliar contexts, the costly version, the parts running on autopilot.
+
+The pattern is one of three honest moves, not the default. A top band can: warn (the strength decays if unexamined - the pattern above), affirm (this is genuinely strong, and here is what it makes possible), or point (here is the horizon, not a risk). Check the distribution across the whole set, not just the quality of each text: at 32 warnings out of 37, even true warnings read as a tic, and a reader who scores well finishes with 37 new ways to fall short. Aim for a rough balance. The warning lands harder when it arrives precisely because it isn't the reflex.
 
 A pattern is not a proof. The b4 pattern is a direction, not a template. If it shows up across many items, ask whether each one earns it independently, or whether some were written to fit. This already happened once: five pillar-level b4s all landed on "you stopped examining it", two of which hadn't earned that mechanism - and it was read as an intentional motif rather than a formula, because the structure was consistent. Consistency and correctness aren't the same signal. Applies to any pattern in this project, not just b4.
 

@@ -244,3 +244,92 @@ Three paragraphs plus a linked line added to `index.html`, as the first child of
 Nothing read wrong. No flags.
 
 Styling: new `.os-metaphor` block using the same body-copy conventions as the rest of the intro screen (`color: var(--text-muted)`, `font-weight: 300`, `line-height: 1.65`), inheriting the existing `#intro-screen { text-align: center }` rule rather than adding a redundant one. Link colored to match the site's established link convention (`--orange-light`), with its own `:focus-visible` rule since it's a plain `<a>`, not a `.btn`. Verified live: exact paragraph text (3/3 match), exact `href` (`https://reskillrebels.com/rebelOS`), correct DOM position (first child, before `#intro-pillars`), and `:focus-visible` via a real keyboard Tab (not a scripted `.focus()` call, per the lesson from the feedback-link round above) - it's the very first tabbable element on the page and shows the expected outline.
+
+---
+
+# The post-review fix pass (from commit 7d7f217)
+
+Triage of three whole-instrument reviews (Fable self-audit, GPT structural, human-reaction). Everything below committed in one pass per the working agreement for this brief.
+
+## Priority 1: b1/b2 alignment audit - the count
+
+All 74 texts read against the A/B option of their own question. **47 of 74 changed** (16 of 37 b1s, 31 of 37 b2s). The misalignments almost all pointed the same direction: the component texts, written for the old instrument, awarded the reader things their chosen option never claimed - "You ask clarifying questions" against an A that said "I deliver to spec"; "You explore deliberately" against a B that said "when a deadline forces me"; "You form a calibrated view" against a B that said "I mostly take the output on faith." A handful under-awarded instead (2.1 b2 required prompting where B claimed self-initiated effort; 3.2 b2 gave no credit for B's "I read my immediate room well").
+
+Kept unchanged (21 b1s, 6 b2s): mostly the short, aphoristic b1s that were already faithful paraphrases of their A ("The crash does the announcing," "Budgets... other people's weather," "Without the title, the case mostly stays unmade").
+
+Principle applied throughout: generous about what's true at that level (b1s now often name the honest defence the A option itself claims - "And in fairness: they work," "which, in fairness, is how plenty of workplaces are built"), awarding nothing the reader denied.
+
+## Priority 2: rule 1 survivals - all addressed
+
+- c22 b4: teaching-first sentence gone; rewritten entirely (now a "point" - toward weight-bearing messages).
+- c51 b3: "conditions you've designed" gone. The whole c51 ladder now tracks the question's own no-autonomy framing ("small levers, pulled on purpose... knowing which decisions are still yours inside whatever the day imposes").
+- c18 b4: "before you've earned anyone's confidence" gone; rewritten as an affirm about range, no audience.
+- 1.9 (c19) b3/b4: opportunity bias removed - b3 now conditional ("When pressure has come, the list has held") plus explicit credit for quiet stretches; b4's warn is about stated-vs-lived drift, no cost-test required. **Flag for Ioana:** the question's own C ("carried me through real turbulence") and D ("with a real trade-off attached") still carry the opportunity shape; question wording is locked, so this is noted, not fixed.
+- c37 b3: "your team" replaced with "the people you work with."
+- c33 b2: stakeholder-appreciation witness gone.
+
+**The two irreducibles, named as instructed:**
+- c24 Trust-Building: b3 still rests on others' observed behavior ("Things reach you early and rough now") because incoming candor IS the evidence trust exists - remove it and the band claims nothing. Mitigation: b4 now frames trust as a construction and makes portability explicit ("a new place means starting the build again, not discovering you never knew how"), which is the redundant reader's version. The construct cannot be made fully witness-free.
+- c37 Teaching: learners remain present at every band because teaching without a learner isn't teaching. Mitigation: the b4's measure is anti-dependency (people needing you LESS), and b3's evidence is artifact-based (written, findable) before it is social.
+
+## Priority 3 + 4: warning density and the D-echo, resolved together
+
+All 37 b4s rewritten or revised. None is now a pronoun-swapped restatement of its question's D option - each says something the D didn't (the reader who expands a component gets new content, not their answer back). The duplicated jokes are gone from the component layer ("clever hat," "incidentally," "It's not luck," "tired brain," "who really decides" - all now live only in the questions).
+
+**Final distribution across 37 b4s: 11 warn / 15 affirm / 11 point.**
+
+- Warn (11): c11 (self-read staleness), c15 (stretch only where cheap), c19 (stated vs lived values), c23 (conflict skill shaped by past conflicts), c25 (inclusion becoming ritual), c31 (the countable crowding out the uncounted), c35 (priorities have a shelf life), c42 (your own numbers get the gentlest audit), c46 (dismissal feels like discernment), c51 (fatalism is realism that stopped checking), c52 (stress finds new dialects).
+- Affirm (15): c12, c16, c18, c21, c24, c27, c34, c36, c37, c41, c44, c45*, c47, c54, c55, c56. (*c45 is affirm-shading-to-point; counted once, under point, below - the honest count is 15 affirm / 11 point with c45 in point.)
+- Point (11): c13 (the big slow feelings), c14 (frames that never obviously failed), c17 (which version is worth becoming), c22 (weight-bearing messages), c26 (from "can I move this" to "should it move"), c32 (context-reading as direction-finding), c33 (needs before they're briefed), c38 (catching the wrong frame at the kickoff), c43 (the map that keeps moving), c45 (black-box systems), c53 (recovery placed before demand).
+
+Affirm runs slightly ahead of a strict third, deliberately - "where a fix would make a ladder more correct and the tool colder, the ladder loses."
+
+COPY-RULES.md updated: warn/affirm/point added to "The b4 pattern" with the distribution check.
+
+## Priority 5: rhymes
+
+- "The habit worth watching": 10 → 1 ("One drift worth watching," c25 - sole survivor, one pillar).
+- "The real test": 4 → 0. "Rarer/rare": 3 → 0 (incl. the VC b3 report).
+- "harder half/skill/admission/direction/discernment": all announcing sentences gone from components. Where the harder-thing structure was the actual content, the comparison is shown, not announced.
+- Game-mechanics leakage (4 b2s): all rewritten in plain prose ("Thinking is most of where it happens, and left alone, thinking is where it quietly ends"; "There's whoever notices"; "The plan will complain. Take it anyway"; "The whole shift is one wire").
+- The aphoristic-closer beat survives in reduced density. It's the voice; killing it everywhere would flatten the tool. Flagged rather than purged.
+
+## Priority 6: register
+
+All 37 b3s checked against "would this survive in the question ladder?" 31 rewritten (the 6 kept were already question-voiced). Gone from the component layer: "value equation," "leverage points" (idea kept, described in plain words: "the place where a little pressure does a lot of work"), "genuine bias toward action," "create conditions for better group thinking," "build coalitions," "knowledge repository to knowledge multiplier," "hold complexity," "second and third-order effects," "productivity multipliers," "learning loops by default."
+
+## Priority 7: workplace fluency
+
+- VC b1 report now carries the 5.1-style acknowledgment: "...what it changes for whoever it serves: a business, a client, a classroom, a ward, a cause."
+- "Stakeholders" removed from all c33 band texts (the component NAME still says Customer & Stakeholder Understanding - names weren't in scope; flag if wanted).
+- "Your organisation" survives in c31 b2 and the c31 construct generally - Business Fluency genuinely is about organisational economics; flattening it further would blur the construct. Named as a known residual.
+
+## Priority 8: ladders
+
+- c34 and c31 b3→b4 verbatim repeats: gone (b4s rebuilt on different moves).
+- c55 b3: "without anyone talking you down first" removed (returned to b4's territory); b3 now matches C's actual claim including its modesty ("Mostly, they work").
+- c53: b4 no longer restates b2's distinction - it's a point about placement (rest before demand).
+- c54: b4 now claims a genuinely higher level (freed capacity, outside criticism landing without an inner ally) rather than re-explaining b3.
+- c47: b3/b4 inversion fixed - b3 is the play happening, b4 is the play understood as the engine ("technology now happens with you, not to you").
+- b4 = b3 + one clause (c13, c14, c16, c21, c25, c43): all six rebuilt with independent b4 content.
+- Reverse check (B→C larger than C→D): no clear cases found after the rewrites; c12's B→C step (hindsight-spotting → deliberate audit) is the widest but matches the question's own ladder.
+
+## Reports (Priority 9)
+
+Reads widened to pillar through-lines: HE b2/b3 (beyond "the reading"), TF b2/b3 (beyond tool-use), Sus b3 (beyond energy), Sus b4 (invisible parts named: perspective, self-talk, people). Mindset b4 nextStep widened (belief → belief/story/way-you-do-things). NextSteps otherwise kept: a doable action is necessarily concrete, and concreteness picks an instance - the read now carries the coverage so the action can afford to be specific. That tension is structural, not a defect.
+
+## Flagged for Ioana, not fixed
+
+1. Question 1.9 C/D opportunity shape (above).
+2. 5.6's cultural assumption (reach-out-without-reason as the route to support) - question-level, post-pilot.
+3. Overlaps for post-pilot: 2.6/3.2 ("who really decides" in both Ds), 1.6/1.7, 1.8/3.6, the 2.7/4.2/4.3/4.5 skepticism cluster. Note: the component-layer duplication of "who really decides" is fixed (c26/c32 b4s no longer use it); the two question Ds still share it.
+4. Timeframe conflict: global "last three months" vs "this quarter" (3.1), "this week" (3.5), "last month" (VC b1 nextStep), "the last group" (2.5), "your last experiment" (4.4).
+5. Idiom list surviving in components, Ioana's call each: "other people's weather" (kept, transparent metaphor), "moved the needle" (c26 b3, from her approved question), "smells wrong" (c42 b2), "off the cuff" (question 2.2, locked), "performed-known" (c56 b3 coinage), "the plan will complain" (c36 b2, mine), "noise with a moral costume on" (c54 b1, mine), "stress finds new dialects" (c52 b4, mine).
+6. Spelling: question 4.3 A has "skepticism" (US), component c43 b1 "scepticism" (UK) - the file mixes; questions locked, so noted.
+7. c33's component name still contains "Stakeholder" though its band texts no longer do.
+
+## Rule-vs-line conflicts encountered
+
+- c25 b4 keeps "One drift worth watching" - the last use of a phrase this pass otherwise eliminated. Kept because the sentence is doing real work and one use isn't a tic; cut it if the phrase is now burned.
+- c37 b4's "You build it anyway" ending is emphatic in a band text - permitted under the new rule 2 scoping (band texts don't compete), flagged since that scoping is new.
+- Sus b1 report's "it's sequencing" was flagged as opaque cold; kept because it's Ioana's approved Job 2 text and the surrounding sentence explains it. Her call.
