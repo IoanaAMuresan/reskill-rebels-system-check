@@ -49,6 +49,8 @@ header p {  font-size: 0.95rem;  font-weight: 300;  color: var(--text-muted);  m
 .profile-label {  font-family: 'Barlow Condensed', sans-serif;  font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;  color: var(--orange); margin-bottom: 0.4rem;}
 .profile-title {  font-family: 'Barlow Condensed', sans-serif;  font-size: 1.5rem; font-weight: 900; text-transform: uppercase;  letter-spacing: 0.03em; margin-bottom: 0.35rem;}
 .profile-desc {  font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; font-weight: 300;}
+.profile-share-btn {  margin-top: 1rem;  padding: 0.6rem 1.4rem;  font-size: 0.78rem;}
+.share-status {  font-size: 0.78rem;  color: var(--text-muted);  margin-top: 0.65rem;}
 /* PILLAR BARS */.pillar-results { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
 .pillar-result-row {  background: rgba(15,31,56,0.55);  border: 1px solid rgba(255,255,255,0.08);  border-radius: 6px; padding: 0.9rem 1.2rem;  backdrop-filter: blur(6px);}
 .pillar-result-header {  display: flex; justify-content: space-between;  align-items: center; margin-bottom: 0.5rem;}
@@ -195,7 +197,7 @@ header p {  font-size: 0.95rem;  font-weight: 300;  color: var(--text-muted);  m
   /* interactive-only chrome has no place on paper */
   .results-toolbar, .email-capture, .result-actions, .expand-note, #cursor-hint,
   .nav-row, #progress-bar-wrap, #step-label, .comp-hint, .comp-chev,
-  .aspiration-modal, .band-tip { display: none !important; }
+  .aspiration-modal, .band-tip, .profile-share-btn, .share-status { display: none !important; }
 
   header { border-bottom-color: #ccc !important; }
   header h1 { color: #14213d !important; }

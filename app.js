@@ -687,6 +687,37 @@ async function copyResultsSummary(){
   } catch(e){ window.prompt('Copy your summary:', text); }
 }
 
+/* ---------- share: growth loop - profile name + link, tagged so shared traffic is measurable ---------- */
+async function shareProfile(){
+  if (!lastProfileName) return;
+  const statusEl = document.getElementById('share-status');
+  const setStatus = (msg) => {
+    if (!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.classList.remove('hidden');
+    clearTimeout(statusEl._hideTimer);
+    statusEl._hideTimer = setTimeout(() => statusEl.classList.add('hidden'), 4000);
+  };
+  const url = 'https://systemcheck.reskillrebels.com/?source=share';
+  const text = `I ran the Rebel OS System Check and came out as ${lastProfileName}. Five pillars, about 20 minutes, and it's more honest than most of these things.`;
+
+  if (navigator.share){
+    try {
+      await navigator.share({ text, url });
+      setStatus('Shared ✓');
+    } catch(e){
+      setStatus(e && e.name === 'AbortError' ? 'Share cancelled.' : "Couldn't share - try again?");
+    }
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(`${text} ${url}`);
+    setStatus('Copied to clipboard ✓');
+  } catch(e){
+    setStatus("Couldn't copy - try selecting and copying manually.");
+  }
+}
+
 let aspirationModalIdx = -1;
 function openAspirationModal(pillarIdx){
   if (!radarChart || !lastAvgs) return;
@@ -816,6 +847,8 @@ function showResults(){
       <div class="profile-label">Your Rebel OS Profile</div>
       <div class="profile-title">${profile.name}</div>
       <div class="profile-desc">${profile.desc}</div>
+      <button type="button" class="btn btn-primary profile-share-btn" onclick="shareProfile()">Share your profile →</button>
+      <div class="share-status hidden" id="share-status" role="status" aria-live="polite"></div>
     </div>`;
   document.getElementById('overall-shape-note').innerHTML =
     `<div class="profile-desc" style="text-align:center;margin:-0.4rem 0 1.4rem;">${shapeNote(avgs)}</div>`;
