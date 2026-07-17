@@ -125,3 +125,59 @@ c46's original also carried faint bravado ("not many people can do it well") - g
 
 ### Proposed, not done
 - None for this pillar.
+
+---
+
+## Sustainability (c51-c56)
+
+### Construct drift - fixed (largest single defect found in this pass)
+**c56 "Support Systems & Community" b2, b3, and b4 were describing career mobility/trajectory, not support systems or community at all.** Only b1 was on-topic. The original b2-b4:
+
+> b2: "You recognise misalignment - the feeling that the current situation isn't quite right, that your capabilities aren't being used well..."
+> b3: "You make strategic moves - not reactive ones. You have enough clarity about what you're building toward..."
+> b4: "You shape your trajectory proactively. Movement isn't something that happens to you - it's something you design. At this level, career mobility is an active practice, not a crisis response."
+
+None of that is about relationships, support, or community - it's a "career navigation" construct that doesn't match this component's name, its b1, or its own already-approved question (5.6: "The people who restore you: when did they last hear from you without a reason?"). This isn't a rule 1-5 issue, it's the "describes the wrong construct" category the brief names explicitly under "fix defects freely" - surgery couldn't fix it, since three-quarters of the ladder needed to be about a different subject entirely.
+
+Rebuilt b2-b4 grounded directly in the four approved answer options for question 5.6, so the component report and the question it summarizes finally agree with each other:
+- b2 now matches the question's B option (means to invest, rarely does)
+- b3 now matches the question's C option (deliberate and regular, loose ties kept warm)
+- b4 now matches the question's D option (knows what *builds* a support system, not just maintains one - "if I landed somewhere new tomorrow, I'd know where to start")
+
+b4 also satisfies rule 1 on its own terms without needing the b4-pattern workaround, since Support Systems & Community is named in the brief as legitimately social - the construct itself requires other people. What was cut wasn't the social content, it was the wrong topic.
+
+**This is worth your own read before trusting my rebuild** - it's a bigger rewrite than anything else in this pass, and while I grounded it in your own approved question copy to keep the risk low, three sentences of new voice is still three sentences of new voice.
+
+### Rule 1 (no witness) - fixed
+c51, c52, c53, c54, c55 all had b4s requiring an audience or culture-building: "help create conditions where the people around you," "you model that boundaries are professional infrastructure," "you help others understand it too," "gives permission to others," "someone others come to... known for." All five reuse the discernment clause from their own approved question copy:
+- c51 Energy & Attention: knowing what you control vs. don't, not expecting a tired brain to do sharp work on a schedule you didn't design
+- c52 Stress Regulation: telling stress that's a real warning from discomfort worth carrying for something that matters
+- c53 Recovery Practices: knowing when twenty minutes helps versus when you actually need proper rest
+- c54 Self-Compassion: kindness and accountability aren't opposites, and self-punishment just feels like rigor
+- c55 Perspective Management: knowing when stepping back is clarity and when it's avoidance in a clever hat
+
+c55 b3 also had a trailing witness clause ("You help others find perspective too") cut on its own.
+
+c56 is covered above under construct drift - same underlying bug (audience/reputation), but the fix required rebuilding the ladder's actual subject, not just cutting a clause.
+
+### Kept as-is, reasoning
+- c54 b3: "the same basic respect you'd give a colleague" is a comparison device, not an audience requirement - illustrates the standard, doesn't require one to be met.
+- c56 b3: "honestly known... by the handful of people who'd actually notice" - kept deliberately. Support Systems & Community is explicitly named as legitimately social in the brief, and a support system is, by definition, other people. This describes a small number of real relationships, not reputation or reach.
+
+### Grep audit (people|others|colleague|team|room|known for|come(s) to me|ask(s) me|borrow|model|teach|coach)
+2 matches in components.sustainability, both reviewed and legitimate (see above). Zero remaining violations.
+
+### Proposed, not done
+- None for this pillar beyond the construct-drift fix already applied under "fix defects freely."
+
+---
+
+## Summary across all five pillars
+
+- 148 of 148 component band texts reviewed against COPY-RULES.md.
+- Every flagged rule 1 (no witness) violation fixed: b1 and b2 had none in this file as written; b3 had isolated cases in c11, c17, c38, c41, c47, c55 (cut, mostly single trailing clauses); b4 had violations in essentially every component and all were rewritten, either via the b4 pattern (thing that makes you good at it is the thing that lets it rot) or by reusing the discernment clause already approved in that sub-point's own question.
+- One construct-drift defect found and fixed: c56 (Support Systems & Community) had three of four bands describing an unrelated "career mobility" construct.
+- Six components treated as legitimately social per the brief's carve-out (Trust-Building, Collaboration & Inclusivity, Communication & Storytelling in part, Teaching & Knowledge Sharing, Support Systems & Community) - social language kept where it's the capability itself, cut where it was standing or reach.
+- Technical cleanup in passing: two curly apostrophes normalized to straight quotes.
+- Nothing proposed-but-not-done survived pillar by pillar - every fix had a clean landing spot without needing to touch voice, concept, or framing beyond what's documented above.
+- **Job 2 (the 20 pillar reports in `reports.*`) is still outstanding** - the approved text was not yet supplied at the time of this pass. `reports.*` currently still contains the pre-existing (unreviewed) copy, which itself very likely has the same rule 1 pattern (a skim shows "you model growth and flexibility for the people around you," "coach it," "share your mental model" in the existing text) - worth confirming this gets applied once the text arrives, since it feeds the results page's most prominent single line (ONE ACTION THIS WEEK).
