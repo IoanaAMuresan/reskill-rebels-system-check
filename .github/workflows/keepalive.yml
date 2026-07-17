@@ -9,20 +9,30 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Supabase REST API
+      # Inserts a real row via the same POST path the live tool uses (score_submissions),
+      # not just a read - a read-only ping stays green even if the write path breaks
+      # (RLS policy change, key rotation, schema change), and writes fail silently by
+      # design on the live site. Tagged version: "canary" so these rows are trivially
+      # filterable out of any real export. Score values are 1 (the minimum valid score,
+      # scale is 1-4) purely to satisfy the table's check constraints - confirmed against
+      # the real table before landing this: 0 fails those constraints with a 400.
+      - name: Insert canary row into score_submissions
         env:
           SUPABASE_URL: https://qurhxobzrymvwvpkzoee.supabase.co
           SUPABASE_KEY: sb_publishable_PWYseAgWd8nG7_dxRuF-Aw_aCRKknjf
         run: |
           status=$(curl -s -o /tmp/response.txt -w '%{http_code}' \
-            "$SUPABASE_URL/rest/v1/score_submissions?select=id&limit=1" \
-            -H "apikey: $SUPABASE_KEY")
+            -X POST "$SUPABASE_URL/rest/v1/score_submissions" \
+            -H "apikey: $SUPABASE_KEY" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: return=minimal" \
+            -d '{"mindset":1,"human_edge":1,"value_creation":1,"tech_fluency":1,"sustainability":1,"source":"canary","version":"canary"}')
 
           echo "HTTP status: $status"
           echo "Response body:"
           cat /tmp/response.txt
 
           if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then
-            echo "::error::Supabase keep-alive ping failed with status $status"
+            echo "::error::Supabase keep-alive write failed with status $status"
             exit 1
           fi
