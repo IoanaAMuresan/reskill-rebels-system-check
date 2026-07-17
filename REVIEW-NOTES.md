@@ -38,3 +38,31 @@ c11 b3 and c17 b3 also had lighter witness language ("the people around you feel
 
 ### Proposed, not done
 - None for this pillar - the b4 pattern gave every component somewhere real to go without needing to touch voice or framing.
+
+---
+
+## Human Edge (c21-c27)
+
+### Rule 1 (no witness) - fixed
+Six of seven b4s required an audience or standing: c21 ("others come to you... a form of leadership that doesn't require a title" - ironic, since it still required an audience), c22 ("people look forward to reading what you write... that's not vanity, it's influence"), c23 ("your presence genuinely changes how teams handle difficulty"), c26 ("force multiplier in your organisation"), c27 ("known as someone who asks the questions... a resource others rely on"). c25's b4 was an aggregate track-record claim ("groups you lead... consistently produce better outputs than groups without you") rather than a demonstrable single-instance skill - same bug, different shape.
+
+Fixes moved each to the in-the-moment version of the same skill, per COPY-RULES.md's own line for this pillar - "I can make someone feel understood mid-conflict" is a capability; "people preview decisions with me" is standing:
+- c21 Empathy: making someone feel understood mid-conflict, in real time - not a reputation for empathy
+- c22 Communication: adapting communication live, mid-conversation, when it isn't landing
+- c23 Conflict Navigation: b4 pattern - the conflicts you've gotten good at are a specific shape; an unfamiliar one can still catch you flat-footed
+- c25 Collaboration: reading who's unheard *in a group you've just joined* - directly answers the "3 months into a new job" test
+- c26 Influence Without Authority: moving something with zero pre-existing relationship, b4 pattern - influence built in one network doesn't transfer automatically
+- c27 Judgment: turning scrutiny on your own conclusions, not just others' - the harder half
+
+c24 Trust-Building was flagged in the brief as legitimately social. Kept the core idea (trust demonstrated through repeated behavior under real cost) but cut the standing-flavored close ("outlasts any job title," "people go to you") since trust *can't* be fully separated from being demonstrated more than once - that part is intrinsic to the construct, not a rule 1 bug - but being *sought out* is standing, and that part came out.
+
+### Kept as-is, reasoning (per the brief's explicit carve-out for legitimately social components)
+- c22 b4: "You help others communicate more effectively too" - kept as a general opener because Communication & Storytelling is inherently other-directed (you can't communicate to no one), and the sentence immediately grounds in a concrete, in-the-moment action (reviewing a specific draft), not a reputation claim.
+- c24 b1/b3: "People trust your competence" (b1) and "people notice when you're fully in a conversation" (b3) - both describe an observable in-the-moment effect of the reader's own behavior, not a durable reputation. Trust-Building is one of the pillar's explicitly social components.
+- c26 b3: "maintain relationships across the organisation" - an active practice description at a mid-tier band, not a standing claim. The actual violation was b4's "force multiplier," which was fixed.
+
+### Grep audit (people|others|colleague|team|room|known for|come(s) to me|ask(s) me|borrow|model|teach|coach)
+13 matches in components.humanEdge, all reviewed. All are either the corrected in-the-moment social language rule 1 explicitly endorses, or legitimate lower-band descriptions in components the brief names as inherently social. Zero remaining audience/standing violations.
+
+### Proposed, not done
+- None - every b4 had a workable in-the-moment or b4-pattern alternative without touching voice or the pillar's framing.
