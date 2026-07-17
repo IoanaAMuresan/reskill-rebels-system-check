@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Component Preview (throwaway) - Rebel OS System Check</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .preview-banner {
+      background: var(--orange); color: #fff; text-align: center;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.85rem;
+      padding: 0.6rem 1rem;
+    }
+    .preview-pillar-heading {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      text-transform: uppercase; letter-spacing: 0.03em; font-size: 1.8rem;
+      color: #fff; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--orange);
+    }
+    .preview-pillar-heading:first-child { margin-top: 0; }
+    .preview-component-heading {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.02em; font-size: 1rem;
+      color: var(--orange-light); margin: 1.6rem 0 0.6rem;
+    }
+    .preview-band-group { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.4rem; }
+  </style>
+</head>
+<body>
+  <div class="preview-banner">Throwaway preview - not the live site - delete after review</div>
+  <div class="container" id="preview-root"></div>
+
+  <script src="config.js"></script>
+  <script>
+    const root = document.getElementById('preview-root');
+    let html = '';
+
+    CONFIG.pillars.forEach(pillar => {
+      html += `<h2 class="preview-pillar-heading">${pillar.name}</h2>`;
+      const comps = CONFIG.components[pillar.key] || {};
+      Object.keys(comps).forEach(key => {
+        const comp = comps[key];
+        html += `<h3 class="preview-component-heading">${comp.name}</h3><div class="preview-band-group">`;
+        CONFIG.bands.forEach(band => {
+          const text = comp.bands[band.id] || '';
+          html += `
+            <div class="pillar-result-row">
+              <div class="pillar-result-header">
+                <span class="pillar-result-name">${comp.name}</span>
+                <span class="pillar-result-version">${band.label}</span>
+              </div>
+              <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:${band.pct}%"></div></div>
+              <div class="pillar-insight">${text}</div>
+            </div>`;
+        });
+        html += `</div>`;
+      });
+    });
+
+    root.innerHTML = html;
+  </script>
+</body>
+</html>
