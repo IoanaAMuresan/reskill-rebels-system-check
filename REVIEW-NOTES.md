@@ -66,3 +66,34 @@ c24 Trust-Building was flagged in the brief as legitimately social. Kept the cor
 
 ### Proposed, not done
 - None - every b4 had a workable in-the-moment or b4-pattern alternative without touching voice or the pillar's framing.
+
+---
+
+## Value Creation (c31-c38)
+
+### Rule 1 (no witness) - fixed
+All eight b4s required an audience, standing, or a seat at a table an individual contributor is never in: c31 ("help others connect their work to value... shape decisions upstream"), c32 ("a resource others draw on"), c33 ("trusted by stakeholders... they bring you problems before they're fully formed"), c34 ("help organisations see themselves as systems"), c35 ("help teams and organisations develop strategic clarity"), c36 ("teams move faster around you... people know they can bring you a situation half-formed"), c38 ("create conditions where teams think more creatively").
+
+Six of the eight fixes deliberately reused the discernment clause already approved in that same sub-point's question copy (config.js `questions` array, untouched but consulted for consistency), so the component report and the question that feeds it now argue the same thing:
+- c31 Business Fluency: knowing the metric is wrong, not just knowing the metric - "doesn't require a seat in the room where strategy gets decided"
+- c32 Context Awareness: building a context-read from scratch in an unfamiliar place, knowing when you're still guessing
+- c33 Customer & Stakeholder Understanding: testing your read rather than assuming you know better than the person who asked
+- c34 Systems Thinking: knowing when a problem needs the systems view versus when it's just an unfixed thing
+- c35 Strategic Insight: saying no to *good* ideas, not just bad ones, without souring on them
+- c36 Execution Bias: starting is the easy half; knowing which unasked-for thing deserves the effort is the rest
+- c38 Creative Problem-Solving: knowing when the frame was fine and the problem was execution, not perspective
+
+c37 Teaching & Knowledge Sharing is named in the brief as legitimately social - teaching can't be measured without a learner. Kept the "people become more capable because of you" core but rewrote the b4 close to make the anti-dependency point explicit: the highest form of teaching makes people need you *less*, and that's an uncomfortable measure because your own usefulness is supposed to shrink by it. This already argued against audience-dependency before I touched it; I sharpened it rather than removed it.
+
+### Rule 2 (discernment, not bravado) - improved as a side effect
+Every rewritten b4 above ends on a discernment clause (knowing when X applies versus when it doesn't) rather than a flat capability claim. This wasn't separately targeted - it fell out of reusing the questions' own discernment clauses - but it's worth noting since it's exactly what rule 2 asks for.
+
+### Kept as-is, reasoning
+- c31 b1: "other people's weather" - a metaphor, not an idiom requiring cultural knowledge (weather is universal, "not something you control" is the transparent mapping). Reads cold fine; not a rule 3 issue. Pre-existing text, not touched.
+- c37 b1-b3: "people," "team," "community" appear throughout because teaching requires someone being taught. Consistent with the brief's explicit carve-out for this component.
+
+### Grep audit (people|others|colleague|team|room|known for|come(s) to me|ask(s) me|borrow|model|teach|coach)
+7 matches in components.valueCreation, all reviewed. c31's "room" is the rejected framing, explicitly named to say the reader *doesn't* need it. c37's matches are the intentionally-kept teaching component. Zero remaining violations.
+
+### Proposed, not done
+- None for this pillar.
