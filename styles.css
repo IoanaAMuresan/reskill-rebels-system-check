@@ -70,6 +70,9 @@ header p {  font-size: 0.95rem;  font-weight: 300;  color: var(--text-muted);  m
 .consent-row {  display: flex; align-items: flex-start; gap: 0.55rem; max-width: 400px; margin: 0.85rem auto 0; text-align: left; font-size: 0.74rem; color: var(--text-muted); line-height: 1.5; cursor: pointer;}
 .consent-row input[type="checkbox"] {  flex-shrink: 0; width: 16px; height: 16px; margin-top: 0.15rem; accent-color: var(--orange);}
 .consent-row a { color: var(--orange-light); }
+.feedback-link { color: var(--orange-light); text-decoration: underline; }
+.feedback-link:hover { color: var(--orange); }
+.feedback-link:focus-visible { outline: 2px solid var(--orange-light); outline-offset: 2px; border-radius: 2px; }
 .email-form-error {  font-size: 0.8rem; color: #ff8080; margin-top: 0.65rem;}
 #email-success {  font-size: 0.83rem; color: #7ddc8f; margin-top: 0.65rem;}
 .privacy-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.65rem; }

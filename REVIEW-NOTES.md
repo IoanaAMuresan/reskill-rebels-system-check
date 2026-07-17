@@ -218,3 +218,19 @@ Eight targeted fixes to the pillar reports applied verbatim, supplied with reaso
 
 ### Still outstanding
 The intro metaphor (three paragraphs, above the pillar list, linking to reskillrebels.com/rebelOS) was requested in the same message but the actual paragraph text wasn't included - the brief had a placeholder (`[paste the three paragraphs...]`) instead of content. Not applied. Waiting on the actual text.
+
+---
+
+## Beta framing and feedback route
+
+**`config.js`:** `disclaimer` extended with "It's also still evolving: if a question or a result misses the mark for you, I'd genuinely like to know." Applied verbatim.
+
+**`index.html`:** added a sibling `<p>` directly after the `#disclaimer` paragraph on the results screen, containing a plain `mailto:` link: `Tell me what missed →`, `href="mailto:hey@reskillrebels.com?subject=System%20Check%20feedback"`. No `body` param - checked the rendered `href` directly rather than trusting the source, and confirmed it carries only the subject line. No scores, profile, or version anywhere in the link.
+
+Went with a separate sibling paragraph rather than folding the link into the `#disclaimer` element itself, because `app.js` sets that element's content via `textContent`, not `innerHTML` - embedding a real `<a>` in there would have meant changing how that element is populated. A static sibling link needs no `app.js` change at all, which is a smaller, safer diff for something this simple.
+
+Styled to match the site's existing link convention (`color: var(--orange-light)`, same as the privacy-policy links) rather than inventing a new link treatment. Added a `.feedback-link:focus-visible` rule identical in shape to the existing `.btn:focus-visible` (`2px solid var(--orange-light)`, `2px` offset) - `<a>` isn't a `.btn`, so it needed its own rule to get the same treatment, not just a class reuse.
+
+**Verified, not just written:** confirmed the extended disclaimer renders via `CONFIG.disclaimer`, confirmed the link's actual `href` attribute (not just the source text) is exactly `mailto:hey@reskillrebels.com?subject=System%20Check%20feedback` with nothing else appended, and confirmed `:focus-visible` behavior with a **real keyboard Tab/Shift+Tab** rather than a scripted `.focus()` call - `:focus-visible`'s browser heuristics don't reliably activate from `.focus()`, so that first check gave a misleading result before I switched to genuine key events and got a clean pass (`outline: 2px solid rgb(255, 122, 69)`, matching `--orange-light` exactly).
+
+**One thing I noticed but didn't change:** the new link paragraph is `text-align: start` (left) within its centered 560px box, same as the `#disclaimer` paragraph above it - not centered as a block. This looked slightly off at first glance since the disclaimer text reads as roughly centered (it's long enough to nearly fill the box), while the short link visibly sits left. Checked computed styles on both: they're identical (same class, same box position, same `text-align`). The link isn't behaving differently from its sibling - the disclaimer only *looks* centered because it's long. Left as-is rather than adding a one-off `text-align: center` that the disclaimer itself doesn't use.
