@@ -701,7 +701,9 @@ async function shareProfile(){
   const url = 'https://systemcheck.reskillrebels.com/?source=share';
   const text = `I ran the Rebel OS System Check and came out as ${lastProfileName}. Five pillars, about 20 minutes, and it's more honest than most of these things.`;
 
-  if (navigator.share){
+  // hoverCapable (mouse + fine pointer) means a real desktop - even though desktop Safari
+  // exposes navigator.share too, the OS share sheet it opens there is the wrong affordance.
+  if (!hoverCapable && navigator.share){
     try {
       await navigator.share({ text, url });
       setStatus('Shared ✓');
