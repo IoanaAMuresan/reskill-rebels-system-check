@@ -15,10 +15,10 @@ const CONFIG = {
   ],
 
   bands: [
-    { id: "b1", label: "v1.0 - Installing",  upTo: 1.75, pct: 25 },
-    { id: "b2", label: "v1.5 - Configuring", upTo: 2.5,  pct: 50 },
-    { id: "b3", label: "v2.0 - Optimising",  upTo: 3.25, pct: 75 },
-    { id: "b4", label: "v3.0 - Integrating", upTo: 4.0,  pct: 100 }
+    { id: "b1", label: "v1 - Installing",  upTo: 1.75, pct: 25 },
+    { id: "b2", label: "v2 - Configuring", upTo: 2.5,  pct: 50 },
+    { id: "b3", label: "v3 - Optimising",  upTo: 3.25, pct: 75 },
+    { id: "b4", label: "v4 - Integrating", upTo: 4.0,  pct: 100 }
   ],
 
   /* ---- QUESTIONS: FINAL - from Ioana's build file. One per sub-point.
@@ -542,7 +542,7 @@ const CONFIG = {
     answerFrame: "Answer for the last three months, not your best month ever.",
     priming: "Some of these questions may stir more than they ask. That's normal - it means they're working.",
     betweenChapters: "Notice what came up. When you're ready - next layer.",
-    bandExplainer: "The upgrade scale: v1.0 Installing → v1.5 Configuring → v2.0 Optimising → v3.0 Integrating. It marks where this part of your OS sits on the path. A starting point, not a grade.",
+    bandExplainer: "The upgrade scale: v1 Installing → v2 Configuring → v3 Optimising → v4 Integrating. It marks where this part of your OS sits on the path. A starting point, not a grade.",
     fullRun: "Run the full System Check →",
     resumeFull: "Continue where you left off →",
     seeResults: "See your full picture →",

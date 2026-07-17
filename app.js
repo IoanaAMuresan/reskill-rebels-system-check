@@ -625,12 +625,10 @@ function renderDecisionSnapshot(avgs){
         <div class="decision-card">
           <div class="decision-card-label">Strongest pillar</div>
           <div class="decision-card-value">${snap.strongest.p.name}</div>
-          <div class="decision-card-note">Score ${snap.strongest.v.toFixed(1)} of ${CONFIG.scale.max}</div>
         </div>
         <div class="decision-card">
           <div class="decision-card-label">First upgrade</div>
           <div class="decision-card-value">${snap.upgrade.p.name}</div>
-          <div class="decision-card-note">Score ${snap.upgrade.v.toFixed(1)} of ${CONFIG.scale.max}</div>
         </div>
         <div class="decision-card">
           <div class="decision-card-label">One action this week</div>
