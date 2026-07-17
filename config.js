@@ -252,47 +252,47 @@ const CONFIG = {
 
     // ---- sustainability ----
     { pillar: "sustainability", sub: "5.1 Energy & Attention Management", component: "c51",
-      text: "Where did your best hours go this week?",
+      text: "Your workday may not be yours to schedule. Overall, what happens to your energy and attention inside it?",
       options: [
-        "To whoever booked them first. My energy is managed by my calendar, not by me.",
-        "I know when my best thinking happens. Protecting it keeps failing.",
-        "Mostly by design - my prime hours go to the work that matters, and the loudest notification doesn't win.",
-        "My conditions are engineered, and others copy them. \"How do you protect your mornings?\" gets asked." ] },
+        "Work takes what it takes. I usually notice I'm running on empty once I'm already there.",
+        "I know what sharpens me and what drains me. Doing anything with that knowledge is less consistent.",
+        "I use the choices I do have - what I tackle when, where I put my full attention, when I reset. Small levers, used on purpose.",
+        "I know what I control and what I don't. I protect the good hours where I can, recover in the gaps where I can't - and I've stopped expecting a tired brain to do sharp work just because the calendar says so." ] },
     { pillar: "sustainability", sub: "5.2 Stress Regulation & Boundaries", component: "c52",
       text: "How does stress usually announce itself to you?",
       options: [
         "As the crash. Illness, vanished motivation - the early signals go unread.",
         "I see the warnings. I push through them anyway; my limits exist in theory, crossed in practice.",
         "I catch it early and act: \"not this, not now - I'm protecting capacity for that.\"",
-        "I run stress as a system, not an emergency - and my boundaries get modeled and borrowed." ] },
+        "I know my early signals by name and act on them before they escalate. And I can tell the difference between stress that's warning me something needs to change, and discomfort I can carry for something worth doing." ] },
     { pillar: "sustainability", sub: "5.3 Recovery Practices & Mental Hygiene", component: "c53",
-      text: "After your typical weekend, what state do you come back in?",
+      text: "After time away from work, what state do you usually come back in?",
       options: [
-        "Roughly as tired. Scrolling numbed, nothing restored; sleep stays the adjustable variable.",
+        "Roughly as tired. I stopped working, but apparently forgot to recover. Sleep is still the first thing I borrow from.",
         "Hit and miss. I haven't really mapped what genuinely restores me.",
-        "Restored, mostly. I know my real recovery and protect it - sleep first, non-negotiably.",
-        "Recovery is built into my rhythm so well people assume I have extra hours - and a few people around me now run rhythms I helped design. I come back more capable than I left, reliably." ] },
+        "Restored, mostly. I know what genuinely helps me recover, and I protect as much of it as life allows. Sleep matters, and I treat it that way.",
+        "I know the difference between what actually restores me and what just distracts me from being tired. I have ways to reset when time is short, and I know when twenty minutes will help and when what I really need is proper rest." ] },
     { pillar: "sustainability", sub: "5.4 Self-Compassion & Emotional Resilience", component: "c54",
       text: "You made a real mistake. What does the next hour sound like, inside?",
       options: [
-        "The punishment loop - commentary I'd never inflict on a colleague, running long past useful.",
-        "I catch the harsh voice. Quieting it works maybe half the time.",
+        "A bit of a punishment loop - commentary I'd never inflict on a colleague, running long past useful.",
+        "I catch myself using a harsh voice I wouldn't use with others; quieting it works maybe half the time.",
         "\"Okay, that didn't work - what do I do differently?\" arrives fast. Standards high, kindness basic.",
-        "My relationship with failure is visibly productive - and people take smarter risks around me because of it." ] },
+        "I can be straight with myself about what went wrong without turning it into a verdict on me. Kindness and accountability aren't opposites - though it took me a while to fully own that." ] },
     { pillar: "sustainability", sub: "5.5 Perspective Management", component: "c55",
-      text: "Something difficult is filling the entire frame. What can you do with the frame?",
+      text: "Something difficult has taken over your thinking. What happens to your sense of perspective?",
       options: [
-        "Nothing. The temporary feels permanent, and the urgent eats the important.",
-        "I can zoom out when someone reminds me. Alone, the frame wins.",
-        "I hold \"this is genuinely hard\" and \"I've navigated hard before\" in the same hand. A walk often does it.",
-        "People come to me when they've lost the wider view. Holding both at once is what I'm for." ] },
+        "The problem becomes the whole story. The temporary feels permanent, and the urgent eats the important.",
+        "I can regain perspective when someone helps me. On my own, the problem has a habit of taking up all the available space.",
+        "I can hold two things at once: this is genuinely hard, AND I've navigated hard before. A bit of distance helps - a walk has saved the day more than once.",
+        "I can find perspective myself, even in the middle of the mess, without pretending the problem is smaller than it is. And I know when stepping back is helping me see clearly, and when it's just avoidance in a clever hat." ] },
     { pillar: "sustainability", sub: "5.6 Support Systems & Community", component: "c56",
       text: "The people who restore you: when did they last hear from you without a reason?",
       options: [
-        "There's a network, but the support system inside it is thin - contact mostly means I need something.",
+        "I have people, but I mostly get in touch when something's up.",
         "I mean to invest. Reaching out without a reason still feels odd, so it's rare.",
         "Deliberately and regularly. Loose ties kept warm; honest with the people who actually know me.",
-        "I'm connective tissue. I build the community around me - and it has held real weight when tested." ] }
+        "I tend my relationships like they matter, because... they do. And I know what builds a support system, not just what maintains one - if I landed somewhere new tomorrow, I'd know where to start. It's not luck; it's a practice." ] }
   ],
 
   /* ---- COMPONENTS: FINAL ladder tiers per sub-point (results page only) ---- */
