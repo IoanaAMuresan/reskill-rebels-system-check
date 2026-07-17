@@ -427,38 +427,38 @@ const CONFIG = {
       c41: { name: "4.1 Digital Skills & Tooling", bands: {
         b1: "The same tools, the same way, for years - \"do I have to?\" included.",
         b2: "You use the standard tools competently. You know there's more available than you use. You explore deliberately rather than only when stuck.",
-        b3: "Your digital environment is genuinely set up to support how you work. You use tools at a level that creates real efficiency and quality. You're the person others ask when they're stuck on how to do something.",
-        b4: "You move comfortably across tools and contexts. New tools don't disorient you - they're interesting problems. You help others develop their tooling confidence, and you create environments where experimentation with new tools is normal rather than scary." } },
+        b3: "Your digital environment is genuinely set up to support how you work. You use tools at a level that creates real efficiency and quality - not just competent use, but use that's been deliberately tuned over time.",
+        b4: "You move comfortably across tools and contexts. New tools don't disorient you for long - they're interesting problems, not threats. You can usually tell, within the first real use, whether a new tool deserves more of your time or whether it's the same thing with a new name and a waitlist." } },
       c42: { name: "4.2 Data Thinking", bands: {
         b1: "Charts arrive with authority and mostly keep it - a number on a slide reads as settled.",
         b2: "You work with basic data in your domain. You can read a standard chart. You ask questions about what data is and isn't showing, rather than just accepting conclusions.",
         b3: "You work fluently with data in your domain and adjacent areas. You can build a basic case from data, spot the holes in someone else's, and communicate data-informed conclusions clearly to non-specialists.",
-        b4: "You create data-informed cultures - where people ask the right questions about evidence, where decisions are made with appropriate rigour, where \"the data says\" gets appropriately interrogated rather than treated as conversation-ending. That's a real organisational contribution." } },
+        b4: "You can take a chart apart and build a better one, and you know the difference between a number that's precise and a number that's true - they part company more often than people assume. \"The data says\" doesn't end the conversation for you; it starts a more specific one." } },
       c43: { name: "4.3 AI Literacy", bands: {
         b1: "They're not in your work yet - some mix of scepticism, noise, and other priorities.",
         b2: "You have a basic working familiarity with at least one AI tool. You form a calibrated view of what it's useful for and where it falls short.",
         b3: "You work with AI fluidly across multiple use cases. You know how to prompt effectively, how to evaluate outputs critically, and how to integrate AI into your workflow without losing your own judgment. You've found your genuine productivity multipliers.",
-        b4: "You help others develop a calibrated relationship with AI - neither scared nor credulous. You can have intelligent conversations about what AI means for your organisation, your team, your field - with specificity and nuance rather than hype or fear. You're part of the conversation about how AI gets used well in your context." } },
+        b4: "You direct AI tools precisely and verify what comes back, especially the answers that sound most confident. You know which parts of your work should never go near it - not from fear, but from a specific, calibrated sense of where it actually degrades the outcome." } },
       c44: { name: "4.4 Experimentation & Iteration", bands: {
         b1: "Waiting for the complete plan is the starting state - nothing ships until it's fully formed.",
         b2: "You run tests - pilots, trials, experiments by name - and mostly continue as before regardless of what they show. The motions are there; the adaptation isn't yet. The level turns when a result actually changes something.",
         b3: "Experimentation is how you move. You build in learning loops by default. You're comfortable with visible imperfection in the service of visible progress. You've stopped waiting for the perfect plan because you know the plan gets better through doing, not through planning.",
-        b4: "You create cultures of experimentation - where teams feel safe trying things, where failures are genuinely treated as data, where the bias toward learning is stronger than the bias toward being right the first time. In the AI era, that's a competitive advantage at organisational scale." } },
+        b4: "You design experiments so they can actually prove you wrong, and then you let them - including when the idea being killed is one you personally liked and had already started defending. That's the harder half. Running the experiment was never the hard part." } },
       c45: { name: "4.5 Understanding Algorithms & Systems", bands: {
         b1: "\"The system says\" still ends conversations - the output reads as fact.",
         b2: "You comply with the system's outputs, sometimes with a grumble, without yet evaluating them. The questions exist somewhere - \"what is this thing actually doing?\" Asking them out loud is the next step.",
         b3: "You work with automated systems critically and effectively. You know when to use them, when to question them, and when to override them. You can have an informed conversation about algorithmic bias, about what a model is and isn't appropriate for, about the limits of what any automated system can do.",
-        b4: "You shape how your organisation uses automated systems - building in the human oversight, the critical evaluation, the genuine questioning of what these systems are for and who they serve. That's increasingly important governance work, and it belongs to people who understand both the human and the technical side." } },
+        b4: "You can usually trace a system's \"no\" back to the actual choice behind it - a rule, a goal, a threshold someone set - and work out whether that choice still makes sense. Which, incidentally, also means you can tell when the system is right and you're the one who's wrong, and that's the harder direction to admit." } },
       c46: { name: "4.6 Spotting the Business Value in the Tech", bands: {
         b1: "Shiny or irrelevant - the translation step missing in both.",
         b2: "You can describe what specific tools do and have a sense of where they might be useful in your context. The translation is rough - more \"this seems relevant\" than \"here's exactly what this would change.\"",
         b3: "You translate fluently in both directions - from technical capability to business value, and from organisational need to technical requirement. You're a useful bridge in conversations that otherwise get stuck on either side.",
-        b4: "You shape technology investment and adoption decisions by helping organisations understand what will actually move the needle versus what will create impressive activity. That's a form of strategic counsel that requires both technical and organisational intelligence - and not many people can do it well." } },
+        b4: "You can tell the demo from the thing that would actually change how the work gets done - and you're just as quick to say \"impressive, and not for us\" as you are to champion something real. That second half is rarer than the first, and more valuable." } },
       c47: { name: "4.7 Playfulness with Tech", bands: {
         b1: "The curiosity got switched off somewhere along the way - tech gets used only as required.",
         b2: "You're allowing yourself to be curious about technology again - or maybe for the first time. You're trying things without a specific outcome in mind. The play is tentative but it's happening.",
-        b3: "You have a genuinely exploratory relationship with technology. You spot unexpected use cases. You combine tools in interesting ways. People come to you with \"is there a way to do X\" because you're known to have a broader sense of what's possible.",
-        b4: "You create cultures of playful exploration - where teams feel safe experimenting, where \"I tried something and it didn't work\" is a normal Tuesday, where the unexpected discovery is celebrated. You model the disposition that makes technological fluency feel like opportunity rather than obligation." } }
+        b3: "You have a genuinely exploratory relationship with technology. You spot unexpected use cases and combine tools in interesting ways, often just to see what happens, with no deliverable attached to the curiosity.",
+        b4: "You've stopped needing a reason. Half of what you actually use day to day came from messing about with no point in mind, and you've made peace with the fact that the useful stuff rarely announces itself as useful in advance - it just looks like play until it isn't." } }
     },
     sustainability: {
       c51: { name: "5.1 Energy & Attention Management", bands: {

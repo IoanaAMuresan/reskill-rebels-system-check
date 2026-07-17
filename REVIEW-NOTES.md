@@ -97,3 +97,31 @@ Every rewritten b4 above ends on a discernment clause (knowing when X applies ve
 
 ### Proposed, not done
 - None for this pillar.
+
+---
+
+## Tech Fluency (c41-c47)
+
+### Rule 1 (no witness) - fixed
+All seven b4s, plus two b3s, required an audience: c41 b3 ("you're the person others ask when they're stuck") and b4 ("help others develop their tooling confidence, and you create environments..."); c42 b4 ("you create data-informed cultures"); c43 b4 ("you help others develop a calibrated relationship with AI"); c44 b4 ("you create cultures of experimentation... competitive advantage at organisational scale"); c45 b4 ("you shape how your organisation uses automated systems... governance work"); c46 b4 ("you shape technology investment and adoption decisions... not many people can do it well" - also mild bravado in the close); c47 b3 ("people come to you... because you're known to have a broader sense") and b4 ("you create cultures of playful exploration... you model the disposition").
+
+All nine fixes reuse the discernment clause already approved in that sub-point's own question copy, same approach as Value Creation, for the same reason - consistency between the report and the question that feeds it:
+- c41 Digital Skills: telling whether a new tool deserves your time or is the same thing rebranded
+- c42 Data Thinking: precise versus true - a number can be exact and still lie about the world
+- c43 AI Literacy: knowing which parts of your work should never go near it
+- c44 Experimentation: letting an experiment kill an idea you personally liked
+- c45 Understanding Algorithms: knowing when the system is right and you're the one who's wrong
+- c46 Spotting Business Value: "impressive, and not for us" said as readily as genuine enthusiasm
+- c47 Playfulness: the useful stuff doesn't announce itself as useful until it already is
+
+c46's original also carried faint bravado ("not many people can do it well") - gone along with the rest of the clause, not patched separately.
+
+### Rule 3 (jargon) - fixed in passing
+- c44 b4: cut "in the AI era" (trend-chasing framing) and "competitive advantage at organisational scale" (business jargon) along with the audience clause it was attached to.
+- c45 b4: cut "governance work" (unexplained term of art) along with the audience clause.
+
+### Grep audit (people|others|colleague|team|room|known for|come(s) to me|ask(s) me|borrow|model|teach|coach)
+2 matches in components.techFluency, both false positives: a general comparison ("more often than people assume") and "AI model" colliding with the keyword "model." Zero remaining violations.
+
+### Proposed, not done
+- None for this pillar.
