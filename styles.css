@@ -36,6 +36,12 @@ header p {  font-size: 0.95rem;  font-weight: 300;  color: var(--text-muted);  m
 .btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.45); }
 /* INTRO */#intro-screen { text-align: center; animation: slideIn 0.4s ease; }
 .intro-pillars {  display: flex; flex-wrap: wrap; gap: 0.5rem;  justify-content: center; margin: 1.5rem 0 1.8rem;}
+.os-metaphor {  max-width: 520px; margin: 0 auto;}
+.os-metaphor p {  font-size: 0.92rem; font-weight: 300; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.85rem;}
+.os-metaphor p:last-child { margin-bottom: 0; }
+.os-metaphor a {  color: var(--orange-light);}
+.os-metaphor a:hover { color: var(--orange); }
+.os-metaphor a:focus-visible { outline: 2px solid var(--orange-light); outline-offset: 2px; border-radius: 2px; }
 .pillar-chip {  font-family: 'Barlow Condensed', sans-serif;  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;  text-transform: uppercase; padding: 0.28rem 0.75rem;  border-radius: 2px; background: rgba(232,96,42,0.1);  border: 1px solid rgba(232,96,42,0.28); color: rgba(255,255,255,0.78);}
 .time-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2rem; }
 /* RESULTS */#results-screen { animation: slideIn 0.4s ease; }
