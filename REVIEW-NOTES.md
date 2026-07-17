@@ -333,3 +333,17 @@ Reads widened to pillar through-lines: HE b2/b3 (beyond "the reading"), TF b2/b3
 - c25 b4 keeps "One drift worth watching" - the last use of a phrase this pass otherwise eliminated. Kept because the sentence is doing real work and one use isn't a tic; cut it if the phrase is now burned.
 - c37 b4's "You build it anyway" ending is emphatic in a band text - permitted under the new rule 2 scoping (band texts don't compete), flagged since that scoping is new.
 - Sus b1 report's "it's sequencing" was flagged as opaque cold; kept because it's Ioana's approved Job 2 text and the surrounding sentence explains it. Her call.
+
+## Amendment to Priority 3 (arrived after the pass had shipped)
+
+The amendment reframing warn/affirm/point as a diagnostic rather than a quota arrived after commit 740e701 was pushed - the pass outran it. Applied retroactively, which required an honest admission first: **my process was quota-shaped.** I explicitly converted several b4s (c31, c32, c45, c51, c52, c53) from affirm to warn/point specifically to move the distribution toward thirds. That is exactly the failure mode the amendment names - the pattern (here, the target distribution) choosing the move instead of the capability.
+
+So every one of the 37 move choices was re-audited against the diagnostic question: is this move true of this capability, or did the quota say so?
+
+Result: **all 37 survive, including the six quota-driven conversions - but for a reason worth stating precisely.** In each conversion I went looking for a warn or point *because* the tally wanted one, but what I found had to be independently real before I wrote it, and re-checked now, each is: metric fixation is a documented failure mode of business fluency (c31); constraint-acceptance really does drift into fatalism (c51); stress signals really do change with age and circumstance (c52); proactive recovery placement is a genuine horizon (c53); context-reading genuinely extends to vetting places from outside (c32); opaque systems are genuinely arriving (c45). The quota directed the search; it did not supply the content. Where the pattern HAD supplied the content - c13's manufactured lexical staleness, the amendment's named case - the mechanism was already replaced in this pass (with a point: the big slow feelings), which is the amendment's own prescription for that component.
+
+Distribution stands at 11 warn / 15 affirm / 11 point - not as a target met, but as where the per-component honest answers landed. Per the amendment: stated, with the reasoning above.
+
+The Mindset run (7 of 9 b4s on "the habit worth watching") is confirmed gone - the phrase appears once in the entire file (c25, Human Edge), and Mindset's nine b4s now use four distinct moves with no shared pivot.
+
+COPY-RULES.md's b4 addition replaced with the amendment's wording verbatim (diagnostic framing, no "aim for a rough balance" quota language).

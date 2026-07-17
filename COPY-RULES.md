@@ -97,7 +97,7 @@ This is the growth mindset applied to itself. It is also the book's argument: ex
 
 Other legitimate directions for a top band: depth, unfamiliar contexts, the costly version, the parts running on autopilot.
 
-The pattern is one of three honest moves, not the default. A top band can: warn (the strength decays if unexamined - the pattern above), affirm (this is genuinely strong, and here is what it makes possible), or point (here is the horizon, not a risk). Check the distribution across the whole set, not just the quality of each text: at 32 warnings out of 37, even true warnings read as a tic, and a reader who scores well finishes with 37 new ways to fall short. Aim for a rough balance. The warning lands harder when it arrives precisely because it isn't the reflex.
+The pattern is one of three moves, not the default. Warn, affirm, or point - chosen by what's true of the capability. If most items in a set take the same move, some were written to fit. Check the distribution, not just the quality of each.
 
 A pattern is not a proof. The b4 pattern is a direction, not a template. If it shows up across many items, ask whether each one earns it independently, or whether some were written to fit. This already happened once: five pillar-level b4s all landed on "you stopped examining it", two of which hadn't earned that mechanism - and it was read as an intentional motif rather than a formula, because the structure was consistent. Consistency and correctness aren't the same signal. Applies to any pattern in this project, not just b4.
 
