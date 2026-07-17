@@ -4,7 +4,7 @@ const CONFIG = {
 
   scale: { min: 1, max: 4 },
 
-  disclaimer: "A reflection tool, not a psychometric test - a snapshot to think with. Want to go deeper on self-awareness? See the validated instruments rounded up here →",
+  disclaimer: "A reflection tool, not a psychometric test - a snapshot to think with.",
 
   pillars: [
     { key: "mindset",        name: "Mindset",        icon: "" },

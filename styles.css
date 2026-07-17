@@ -187,7 +187,55 @@ header p {  font-size: 0.95rem;  font-weight: 300;  color: var(--text-muted);  m
 .aspiration-band-btn:hover:not(:disabled) { border-color: var(--orange); }
 .aspiration-band-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 @media print {
-  .results-toolbar, .email-capture, .result-actions, .expand-note, #cursor-hint { display: none !important; }
-  body::before, body::after { display: none; }
-  .radar-wrap { break-inside: avoid; }
+  * {  animation: none !important;  transition: none !important;  box-shadow: none !important;  text-shadow: none !important;  -webkit-backdrop-filter: none !important;  backdrop-filter: none !important;}
+  body {  background: #ffffff !important;  color: #14213d !important;}
+  body::before, body::after { display: none !important; }
+  .container { max-width: 100%; }
+
+  /* interactive-only chrome has no place on paper */
+  .results-toolbar, .email-capture, .result-actions, .expand-note, #cursor-hint,
+  .nav-row, #progress-bar-wrap, #step-label, .comp-hint, .comp-chev,
+  .aspiration-modal, .band-tip { display: none !important; }
+
+  header { border-bottom-color: #ccc !important; }
+  header h1 { color: #14213d !important; }
+  header h1 span { color: #b8471f !important; }
+  header p, .results-subtitle { color: #444 !important; }
+  #results-screen h2 { color: #14213d !important; }
+  #results-screen h2 span { color: #b8471f !important; }
+
+  /* dark translucent panels -> solid white with a real border, so print doesn't rely on backdrop-filter */
+  .question-card, .radar-wrap, .profile-badge, .pillar-result-row,
+  .decision-snapshot, .decision-card, .asp-panel, .comp-row {
+    background: #ffffff !important;
+    border: 1px solid #ccc !important;
+  }
+  .decision-snapshot { background: #fdf3ee !important; border-color: #e0a988 !important; }
+
+  /* brand orange darkened for legible small text on white (source orange is ~3:1 on white) */
+  .decision-kicker, .profile-label, .pillar-tag, .decision-card-value,
+  .pillar-result-version, .asp-title, .synth-line strong { color: #b8471f !important; }
+
+  /* muted/translucent white body copy -> solid dark grey */
+  .decision-copy, .decision-card-label, .decision-card-note, .toolbar-hint,
+  .profile-desc, .pillar-insight, .synth-line, .privacy-note, .time-note,
+  .asp-dest, .asp-lever-head, .comp-detail, .hub-status {
+    color: #333333 !important;
+    opacity: 1 !important;
+  }
+
+  .pillar-result-name { color: #14213d !important; }
+  .pillar-bar-track { background: #e5e5e5 !important; border: 1px solid #ccc !important; }
+
+  /* accordions read expanded on paper, regardless of on-screen toggle state */
+  .pillar-comp-detail, .comp-row .comp-detail { display: block !important; }
+
+  a { color: #14213d !important; text-decoration: underline; }
+
+  /* keep each card/panel whole rather than splitting across a page break */
+  .radar-wrap, .profile-badge, .pillar-result-row, .decision-snapshot,
+  .decision-card, .comp-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }

@@ -954,6 +954,18 @@ document.addEventListener('keydown', (e) => {
   if (idx >= 0 && idx < btns.length) { e.preventDefault(); selectOpt(idx); }
 });
 
+/* ---------- print: canvas-drawn radar labels ignore CSS, so swap colors directly for the print window ---------- */
+function setRadarPrintColors(active){
+  if (!radarChart) return;
+  const r = radarChart.options.scales.r;
+  r.grid.color = active ? 'rgba(15,31,56,0.25)' : 'rgba(255,255,255,0.1)';
+  r.angleLines.color = active ? 'rgba(15,31,56,0.35)' : 'rgba(255,255,255,0.15)';
+  r.pointLabels.color = active ? '#14213d' : 'rgba(255,255,255,0.8)';
+  radarChart.update('none');
+}
+window.addEventListener('beforeprint', () => setRadarPrintColors(true));
+window.addEventListener('afterprint', () => setRadarPrintColors(false));
+
 /* ---------- init ---------- */
 (async function init(){
   const params = new URLSearchParams(window.location.search);
