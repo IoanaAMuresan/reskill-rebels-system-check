@@ -2,6 +2,7 @@ const LETTERS = ['A','B','C','D','E','F','G','H'];
 let isDemoRun = false;
 let lastProfileName = null;
 let lastUpgradePillarName = null;
+let lastStrongestPillarName = null;
 let answers = {};
 let runQueue = [];
 let runPillar = null;
@@ -687,7 +688,8 @@ async function copyResultsSummary(){
   } catch(e){ window.prompt('Copy your summary:', text); }
 }
 
-/* ---------- share: growth loop - profile name + link, tagged so shared traffic is measurable ---------- */
+/* ---------- share: growth loop - one of three copy variants (picked at random so a feed doesn't
+   fill up with identical posts) + link, tagged so shared traffic is measurable ---------- */
 async function shareProfile(){
   if (!lastProfileName) return;
   const statusEl = document.getElementById('share-status');
@@ -699,7 +701,12 @@ async function shareProfile(){
     statusEl._hideTimer = setTimeout(() => statusEl.classList.add('hidden'), 4000);
   };
   const url = 'https://systemcheck.reskillrebels.com/?source=share';
-  const text = `I ran the Rebel OS System Check and came out as ${lastProfileName}. Five pillars, about 20 minutes, and it's more honest than most of these things.`;
+  const variants = [
+    `Which part of your professional OS wants an upgrade?\n\nMine's ${lastUpgradePillarName}. Not entirely a surprise, if I'm honest.\n\nThe Rebel OS System Check. 20 minutes, no fluff.`,
+    `My Rebel OS profile: ${lastProfileName}.\n\nStrongest pillar: ${lastStrongestPillarName}. Next upgrade: ${lastUpgradePillarName}.\n\nMildly called out. Usefully so.\n\nThe Rebel OS System Check. 20 minutes, no corporate wallpaper.`,
+    `Apparently my professional OS is ready for a ${lastUpgradePillarName} upgrade.\n\nFair.\n\nThe Rebel OS System Check called it in 20 minutes, then gave me somewhere useful to start.`
+  ];
+  const text = variants[Math.floor(Math.random() * variants.length)];
 
   // hoverCapable (mouse + fine pointer) means a real desktop - even though desktop Safari
   // exposes navigator.share too, the OS share sheet it opens there is the wrong affordance.
@@ -713,7 +720,7 @@ async function shareProfile(){
     return;
   }
   try {
-    await navigator.clipboard.writeText(`${text} ${url}`);
+    await navigator.clipboard.writeText(`${text}\n\n${url}`);
     setStatus('Copied to clipboard ✓');
   } catch(e){
     setStatus("Couldn't copy - try selecting and copying manually.");
@@ -778,8 +785,10 @@ function showResults(){
   const overall = CONFIG.pillars.reduce((s,p) => s+avgs[p.key], 0) / CONFIG.pillars.length;
   const profile = CONFIG.profiles.find(p => overall <= p.upTo) || CONFIG.profiles[CONFIG.profiles.length-1];
 
+  const snap = upgradeSnapshot(avgs);
   lastProfileName = profile.name;
-  lastUpgradePillarName = upgradeSnapshot(avgs).upgrade.p.name;
+  lastUpgradePillarName = snap.upgrade.p.name;
+  lastStrongestPillarName = snap.strongest.p.name;
   resetEmailCaptureForm();
 
   submitScores(avgs); // fire-and-forget anonymous row; guarded against repeats
