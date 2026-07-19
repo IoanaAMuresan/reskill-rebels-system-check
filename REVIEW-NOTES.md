@@ -347,3 +347,96 @@ Distribution stands at 11 warn / 15 affirm / 11 point - not as a target met, but
 The Mindset run (7 of 9 b4s on "the habit worth watching") is confirmed gone - the phrase appears once in the entire file (c25, Human Edge), and Mindset's nine b4s now use four distinct moves with no shared pivot.
 
 COPY-RULES.md's b4 addition replaced with the amendment's wording verbatim (diagnostic framing, no "aim for a rough balance" quota language).
+
+---
+
+## Structural fixes brief - Part A (implemented) + Part B (proposal only)
+
+Starting commit for this brief: `cce650a`. Part A committed and pushed per explicit instruction (settled). Part B is proposal only - no code.
+
+### Part A - what changed
+
+**A1. "Next:" -> "Try this:" (all 20 pillar reports).** The label is rendered, not stored. Changed in three template spots so every surface matches:
+- `app.js` line ~577 (the pillar-by-pillar result screen) and ~881 (the results-screen accordion) - the two live reader-facing paths.
+- `preview.html` line ~104 (the internal copy-review page) - so Ioana reviews the same label the reader sees.
+- Left untouched: `app.js` ~590, the `Next: <pillar name>` navigation button. That one genuinely means "next section" and is correct as is.
+- Step copy itself unchanged. Verified live (`index.html?demo=results`): 5 "Try this:" on the results accordion, 0 "Next:" labels, no console errors.
+
+**A2. Profile ranges "up to X" -> band "lo - hi" (preview.html).** The only place a range is shown is `preview.html` line ~66 (the review page); the live profile badge shows no number. Changed the render to compute the band from the thresholds: `lo = (first profile ? scale.min : previous.upTo)`, `hi = this.upTo`. Renders: `1.0 - 1.9`, `1.9 - 2.6`, `2.6 - 3.3`, `3.3 - 4.0`. Display only - `upTo` values and the selection logic are untouched. Verified in preview.
+
+  *Boundary check (requested).* Selection is `overall <= p.upTo`, first match wins, so an exact boundary resolves to the LOWER profile: exactly 1.9 = Steady (not Emerging), 2.6 = Emerging, 3.3 = Active. The shown ranges share endpoints (1.9 is Steady's ceiling and Emerging's shown floor), but the lower band owns the shared value, which matches the logic. Each reader sees only their own band, so nothing contradicts on screen. Flag: if you would rather the floors not repeat the ceiling (e.g. Emerging "2.0 - 2.6") I can, but that would misstate the real threshold - a 1.95 IS Emerging - so I kept your exact numbers. Second flag: I used a spaced hyphen ("1.0 - 1.9") to match your voice rule rather than an en-dash; one-character change if you want the en-dash for numeric ranges.
+
+**A3. "patterns" -> plainer language (component 1.1 Self-Awareness only).** "patterns" appeared in c11 b2 and b3 only (b1 and b4 were already clean). Chose per spot, not a mechanical swap:
+- b2: "You notice your patterns after the fact" -> "You notice how you react after the fact" (the next sentence already explains it: "why you responded the way you did").
+- b3: "You understand your patterns well enough to work with them" -> "You understand your default reactions well enough to work with them" (keeps the plural for "them").
+- c11 is now pattern-free (verified). Scope held to c11 - the broader "patterns" sweep across other components stays with the Mindset line-edit pass, as instructed. (For the record, "patterns" still appears in: c34/c38 question options, c-level b3 texts at config ~403/466, mindset reports b1/b2 at ~500/501, and the Steady profile - all out of scope for this brief.)
+
+**A4. Restore dropped connectives.** Fixed the known case - Steady Foundation: "solid and experienced - and the upgrade hasn't really started yet" -> "solid and experienced, but the upgrade hasn't really started yet."
+
+  *Scan of the other three profiles + all pillar-report reads (requested).* Only Steady had the flagged "affirmation - dash - limitation with no connective" pattern. The rest, and why each was left:
+  - Emerging: "in the middle of the change - past the point of wondering..." - the dash is appositive (it elaborates "middle of the change"), not affirmation-then-limitation. No connective missing.
+  - Active: uses "and" plus a colon; no jammed clauses.
+  - Integrated: left deliberately - it is under A5 review (name + description), so I did not touch its copy.
+  - All 20 pillar-report `read` fields: every dash is either already carrying a connective ("and" / "which") or is an appositive / parenthetical / list, not the flagged pattern. Closest call: Tech Fluency b4, "That last one is the engine - and it's the first thing to go quiet" - it already has "and" (a connective IS present), so it is not the no-connective pattern. Arguably it wants "but" over "and"; flagging only, left unchanged.
+
+### A5. Profile-name options - DECISION NEEDED, not applied
+
+The problem, restated: profile 1 ("The Steady Foundation") is a *thing*; profiles 2-4 are *people* (Adapter / Upgrader / Operator). And "Operator" is flat - it evokes machinery in a warm denim brand. You lean toward people. Three coherent families below; each is four names as one progression. All: describe a level of development of the reader's OS (not a job title or a personality type), read well cold to a non-native reader, and keep the low end proud (no "beginner").
+
+**Family 1 - the "Rebel" line (brand through-line). RECOMMENDED.**
+- The Grounded Rebel
+- The Emerging Rebel
+- The Deliberate Rebel
+- The Integrated Rebel
+
+  Progression: grounded (solid base) -> emerging (mid-change) -> deliberate (running it on purpose) -> integrated (built in). Why I recommend it: it is the strongest brand fit (Reskill *Rebels*), every rung is a person you would be glad to be called including the low end, and it sidesteps the machinery problem entirely - "integrated" is an adjective, so no "Operator"/"Integrator" coldness. "Deliberate" maps exactly onto the profile-3 desc ("running it on purpose rather than on habit"). Every word survives a non-native reader. Only caution: "Rebel" is doing brand work, so it reads as identity + stage rather than a pure development-level label.
+
+**Family 2 - the "Builder" line (craft, warmer, most non-native-safe noun).**
+- The Solid Builder
+- The Restless Builder
+- The Intentional Builder
+- The Seasoned Builder
+
+  Progression: solid -> restless (itching to change) -> intentional -> seasoned. Warmest and most concrete; "Builder" fits the denim/craft feel. Cautions: "Seasoned" is mildly idiomatic (= experienced) and could trip a non-native reader (rule 3); "Restless" is evocative but a hair negative for some.
+
+**Family 3 - the verb arc (minimal, OS-native, most literally "level of development").**
+- The Builder
+- The Adapter
+- The Upgrader
+- The Integrator
+
+  Mirrors the band arc (Installing / Configuring / Optimising / Integrating): build -> adapt -> upgrade -> integrate. Cleanest structurally and the most literal read of "development level." Caution: "Upgrader" / "Integrator" lean mechanical - the exact vibe that made "Operator" weak - though here it is on-metaphor. Pick this if you want the name to denote the OS stage and nothing else.
+
+If you like Family 1, I will draft the four matching one-line descriptions (including replacing profile 4's, per A5's second half) in a follow-up for your tuning.
+
+### Part B - the three-rung results page (PROPOSAL ONLY, no code)
+
+What the tool already computes (so cost is mostly layout, not logic):
+- Lowest pillar + strongest pillar, and the lowest pillar's band "next step" as a single action - `upgradeSnapshot()`.
+- Balanced-vs-gap detection - `spread.gapThreshold`; already flips headline/copy when no pillar clearly trails.
+- The standout-gap sentence naming the lowest pillar - `shapeNote()` line ~778.
+- The lowest COMPONENT within a pillar - `synthesisHTML()` already finds hi/lo components (lines ~311-314).
+- So both rung-1 ingredients (lowest pillar, lowest component within it) exist; they are just not combined into one "start here", and the page currently shows the snapshot AND five equal cards, which partly duplicate.
+
+Current results page, one screen, top to bottom: toolbar -> decision snapshot ("Your first upgrade signal": headline + reason + 3 cards Strongest/First upgrade/One action) -> radar -> profile badge -> shape note -> five equal pillar cards (each: read + "Try this:" + expandable components). The five equal "Try this:" cards plus the snapshot's "one action" are the diffusion.
+
+**Q1 - one screen or two?**
+- Option A (RECOMMEND): single page, strong hierarchy. Rung 1 large and first; rungs 2-4 wrapped in a demoted "The rest, for later" block (collapsed or visually secondary); community line quiet near the bottom. Cost LOW-MEDIUM: reuses the existing one-pass render - mostly reordering, restyling the snapshot into a hero "Start here", and wrapping the other four cards. No new state machine, no radar re-layout risk.
+- Option B: true two-screen / two-state flow (screen 1 = rung 1 + radar/profile; a "see the rest" reveals rungs 2-3). Cost MEDIUM-HIGH: needs a state toggle and second render, careful Chart.js re-layout on show/hide (we have been bitten by radar sizing before), and the panel's "they came back with momentum" really implies persistence across visits, which is more than a toggle.
+- Reason for A: the panel's "first screen / second screen" is about ENERGY sequencing, and a single page where rung 1 owns the fold delivers ~90% of that at a fraction of the cost and risk. A genuine two-visit flow is a deliberate v2, once we see whether rung 1 lifts completion.
+
+**Q2 - how is the one step chosen?**
+- Lead rung 1 with the lowest PILLAR as the frame ("Start with X"), and make the single action that pillar's lowest COMPONENT's step - the most specific lever, which `synthesisHTML` already identifies. Rationale: the pillar is robust (averages 6-9 answers); a component rests on ONE answer, so it is right as the specific action inside the pillar, not as the headline.
+- Tie (two pillars equal-lowest): keep it deterministic - the code already takes `sorted[0]`, stable by pillar order. Do NOT randomize; a shared/reproducible result matters. Optional tiebreak: the one whose lowest single component is lower.
+- Genuinely balanced (spread < gapThreshold): the tool already detects this. Rung 1 should CHANGE COPY rather than force a weak pick - still one step, but framed as the reader's call: "You're even across the board - no single weak spot to rescue. Pick the one that pulls you, and make it deliberate." So rung 1 always shows exactly one step; balanced just swaps "here is the one" for "pick one."
+
+**Q3 - what happens to the decision snapshot?**
+- Rung 1 ABSORBS it, does not sit below it. The snapshot already is a proto-rung-1. Fold it into the single "Start here" block: keep the one-line diagnosis + the single step; drop the separate "Strongest / First upgrade" cards, which duplicate the radar and quietly re-open comparison and choice. "Strongest" can live as a half-line in the profile/shape area ("running strong: X"). Net: one hero block, not snapshot + five cards.
+
+**Q4 - radar and profile, relative to rung 1; profile naming the gap.**
+- Radar: keep it, but AFTER rung 1. Rung 1 owns the fold; the radar is the "here is the whole picture" that rewards the scroll and sits naturally with the demoted rungs 2-4.
+- Profile + gap: `shapeNote` ALREADY names the standout gap when uneven ("Your shape leans uneven - X is the standout upgrade"). The panel's ask is half-built. Fold the shape note INTO the profile badge so the profile speaks to balance in one block (name + desc + gap line). Because rung-1's pillar, the shape note's pillar, and the snapshot's upgrade pillar are all the same computed lowest pillar, unifying them is consistent, not a new calculation - the gap naming folds into rung 1 for free.
+
+**Recommendation:** Option A - single page, strong hierarchy. Rung 1 = lowest-pillar frame + lowest-component action, absorbing the snapshot; balanced-case copy swap; radar and demoted rungs 2-4 below; profile fused with the gap-naming shape note; community line quiet at the bottom. Lowest cost, reuses every existing computation, no new state machine or radar-relayout risk. A true two-visit flow is a deliberate v2 if rung 1 proves out.
+
+Open calls for you (interaction is yours): (1) headline granularity - pillar frame with component action, as recommended, or lead with the component; (2) rungs 2-4 collapsed behind a click vs shown but visually demoted; (3) the community line wording, which is yours to write (I would only slot it).

@@ -60,10 +60,11 @@
 
     // ---- Profiles ----
     html += `<h2 class="preview-global-heading">Profiles</h2>`;
-    CONFIG.profiles.forEach(profile => {
+    CONFIG.profiles.forEach((profile, i) => {
+      const lo = i === 0 ? CONFIG.scale.min : CONFIG.profiles[i - 1].upTo;
       html += `
         <div class="profile-badge" style="margin-bottom:1rem;">
-          <div class="profile-label">Your Rebel OS Profile · up to ${profile.upTo}</div>
+          <div class="profile-label">Your Rebel OS Profile · ${lo.toFixed(1)} - ${profile.upTo.toFixed(1)}</div>
           <div class="profile-title">${esc(profile.name)}</div>
           <div class="profile-desc">${esc(profile.desc)}</div>
         </div>`;
@@ -100,7 +101,7 @@
             </div>
             <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:${band.pct}%"></div></div>
             <div class="pillar-insight">${esc(rep.read)}</div>
-            ${rep.nextStep ? `<div class="pillar-insight" style="font-style:normal;margin-top:0.3rem;"><span style="color:var(--orange, #E8602A);font-weight:700;">Next:</span> ${esc(rep.nextStep)}</div>` : ''}
+            ${rep.nextStep ? `<div class="pillar-insight" style="font-style:normal;margin-top:0.3rem;"><span style="color:var(--orange, #E8602A);font-weight:700;">Try this:</span> ${esc(rep.nextStep)}</div>` : ''}
           </div>`;
       });
       html += `</div>`;

@@ -574,7 +574,7 @@ function showPillarResult(){
       </div>
       <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:${band.pct}%"></div></div>
       <div class="pillar-insight">${rep.read}</div>
-      ${rep.nextStep ? `<div class="pillar-insight" style="font-style:normal;margin-top:0.3rem;"><span style="color:var(--orange, #E8602A);font-weight:700;">Next:</span> ${rep.nextStep}</div>` : ''}
+      ${rep.nextStep ? `<div class="pillar-insight" style="font-style:normal;margin-top:0.3rem;"><span style="color:var(--orange, #E8602A);font-weight:700;">Try this:</span> ${rep.nextStep}</div>` : ''}
     </div>`;
 
   rows += synthesisHTML(runPillar) + componentRowsHTML(runPillar);
@@ -878,7 +878,7 @@ function showResults(){
         </div>
         <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:${band.pct}%"></div></div>
         <div class="pillar-insight">${rep.read}</div>
-        ${rep.nextStep ? `<div class="pillar-insight" style="font-style:normal;margin-top:0.3rem;"><span style="color:var(--orange, #E8602A);font-weight:700;">Next:</span> ${rep.nextStep}</div>` : ''}
+        ${rep.nextStep ? `<div class="pillar-insight" style="font-style:normal;margin-top:0.3rem;"><span style="color:var(--orange, #E8602A);font-weight:700;">Try this:</span> ${rep.nextStep}</div>` : ''}
         ${expandable ? `<div class="pillar-comp-detail">${synthesisHTML(p.key, true)}${compHTML}</div>` : ''}
       </div>`;
   });

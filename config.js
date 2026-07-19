@@ -300,8 +300,8 @@ const CONFIG = {
     mindset: {
       c11: { name: "1.1 Self-Awareness", bands: {
         b1: "Mostly, the reaction just happens - you feel it, then you act on it. Naming what's underneath isn't part of the routine yet.",
-        b2: "You notice your patterns after the fact. A difficult conversation ends and an hour later - or a day later - you understand why you responded the way you did. The awareness is real, but it arrives late. This is still more than most people have. Many professionals go entire careers without this level of reflection. You've started the installation.",
-        b3: "You understand your patterns well enough to work with them intentionally. You know which types of situations challenge you, what they tend to bring up, and you've built real capacity to pause and choose your response. Not perfectly - but consistently enough to trust it when it actually matters.",
+        b2: "You notice how you react after the fact. A difficult conversation ends and an hour later - or a day later - you understand why you responded the way you did. The awareness is real, but it arrives late. This is still more than most people have. Many professionals go entire careers without this level of reflection. You've started the installation.",
+        b3: "You understand your default reactions well enough to work with them intentionally. You know which types of situations challenge you, what they tend to bring up, and you've built real capacity to pause and choose your response. Not perfectly - but consistently enough to trust it when it actually matters.",
         b4: "Self-awareness has become a navigation tool - you steer with it in real time, under pressure, in conversations that matter. One check worth keeping: the person you know so well keeps changing. A self-read from three years ago can be precise, confident, and quietly out of date." } },
       c12: { name: "1.2 Mental Models", bands: {
         b1: "Your assumptions don't read as assumptions yet - they read as how things are. The frameworks you trust get applied everywhere, invisibly.",
@@ -529,7 +529,7 @@ const CONFIG = {
   },
 
   profiles: [
-    { name: "The Steady Foundation",   upTo: 1.9, desc: "You're solid and experienced - and the upgrade hasn't really started yet. The patterns are clear, which means the starting points are too. One component at a time. Not glamorous, but it's the thing that actually works." },
+    { name: "The Steady Foundation",   upTo: 1.9, desc: "You're solid and experienced, but the upgrade hasn't really started yet. The patterns are clear, which means the starting points are too. One component at a time. Not glamorous, but it's the thing that actually works." },
     { name: "The Emerging Adapter",    upTo: 2.6, desc: "You're in the middle of the change - past the point of wondering whether it applies to you, not yet at the point where it runs itself. This is the stretch where deliberate beats natural (annoying, and also true)." },
     { name: "The Active Upgrader",     upTo: 3.3, desc: "Most of your system is running well, and you're running it on purpose rather than on habit. What's left is the quieter work: the parts you've never had to think about. Which is precisely why they're the ones that'll surprise you." },
     { name: "The Integrated Operator", upTo: 4.0, desc: "Your professional OS is in good shape. Which doesn't mean the upgrade is done - it means it changes shape. Less about installing what's missing, more about keeping it sharp for when the ground moves again. And boy, will it." }
