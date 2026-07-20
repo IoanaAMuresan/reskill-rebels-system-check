@@ -519,7 +519,12 @@ if (hoverCapable){
 
 function focusPillarCard(key){
   const card = document.getElementById('pillar-card-' + key);
-  if (!card) return;
+  if (!card){
+    // rung 1 owns this pillar, so it has no card in the demoted list - send them there instead
+    const start = document.getElementById('start-here-container');
+    if (start) start.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
   const header = card.querySelector('.pillar-toggle');
   if (header && !header.classList.contains('open')) togglePillarDetail(header);
   card.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -613,30 +618,77 @@ function upgradeSnapshot(avgs){
   return { strongest, upgrade, action, headline, reason };
 }
 
-function renderDecisionSnapshot(avgs){
+/* Single source of truth for "no pillar is clearly trailing", used by rung 1
+   (copy swap) and rung 2 (whether a pillar was pulled out for rung 1). */
+function isBalanced(snap){ return (snap.strongest.v - snap.upgrade.v) < CONFIG.spread.gapThreshold; }
+
+/* Sentence-case a component label without breaking acronyms ("AI Literacy" ->
+   "AI literacy", "Trust-Building & Presence" -> "Trust-building & presence"). */
+function sentenceCaseLabel(s){
+  return s.split(/(\s+)/).map((tok, i) => {
+    if (/^\s+$/.test(tok)) return tok;
+    if (/^[A-Z]{2,}$/.test(tok)) return tok;       // acronym, leave alone
+    const lower = tok.toLowerCase();
+    return i === 0 ? lower.charAt(0).toUpperCase() + lower.slice(1) : lower;
+  }).join('');
+}
+
+/* Lowest-scoring component within a pillar. Ties resolve to the first in config
+   order (strict <), so a shared result is always reproducible. */
+function lowestComponentIn(pillarKey){
+  const comps = CONFIG.components[pillarKey] || {};
+  const subbed = questionIdxFor(pillarKey)
+    .filter(i => CONFIG.questions[i].component && comps[CONFIG.questions[i].component] && answers[qid(i)] !== undefined);
+  if (!subbed.length) return null;
+  let lo = subbed[0];
+  subbed.forEach(i => { if (answers[qid(i)] < answers[qid(lo)]) lo = i; });
+  const comp = comps[CONFIG.questions[lo].component];
+  const band = bandFor(answers[qid(lo)] + 1);
+  return {
+    name: sentenceCaseLabel(comp.name.replace(/^[0-9.]+ */, '')),
+    text: comp.bands[band.id] || '',
+    // Fix 1 slot: per-component actions do not exist in CONFIG yet, so this is
+    // empty and rung 1 falls back to the pillar's step. Wire here when written.
+    action: comp.actions ? (comp.actions[band.id] || '') : ''
+  };
+}
+
+/* RUNG 1 - one step, chosen for them. Absorbs the old decision snapshot. */
+function renderStartHere(avgs){
+  const host = document.getElementById('start-here-container');
+  if (!host) return;
   const snap = upgradeSnapshot(avgs);
-  const host = document.getElementById('decision-snapshot-container');
+
+  if (isBalanced(snap)){
+    host.innerHTML = `
+      <section class="decision-snapshot start-here" aria-label="Where to start">
+        <div class="decision-kicker">Start here</div>
+        <div class="decision-title">Your system's pretty even - no single weak spot.</div>
+        <div class="decision-copy">Pick the one that pulls you.</div>
+      </section>`;
+    return;
+  }
+
+  const pillar = snap.upgrade.p;
+  const low = lowestComponentIn(pillar.key);
+  const rep = (CONFIG.reports[pillar.key] && CONFIG.reports[pillar.key][snap.upgrade.band.id]) || { nextStep: '' };
+  const action = (low && low.action) || rep.nextStep || '';
+  host.innerHTML = `
+    <section class="decision-snapshot start-here" aria-label="Where to start">
+      <div class="decision-kicker">Start here</div>
+      <div class="decision-title">${pillar.name}${low ? `<span class="start-component"> - specifically, ${low.name}</span>` : ''}.</div>
+      ${low && low.text ? `<div class="decision-copy">${low.text}</div>` : ''}
+      ${action ? `<div class="start-action"><span class="start-action-label">Try this:</span> ${action}</div>` : ''}
+      <div class="start-reassure">Just this one. The rest can wait.</div>
+    </section>`;
+}
+
+/* RUNG 3 - company, not a gate. Destination is the general site for now. */
+function renderCommunity(){
+  const host = document.getElementById('community-container');
   if (!host) return;
   host.innerHTML = `
-    <section class="decision-snapshot" aria-label="Your first upgrade signal">
-      <div class="decision-kicker">Your first upgrade signal</div>
-      <div class="decision-title">${snap.headline}</div>
-      <div class="decision-copy">${snap.reason}</div>
-      <div class="decision-grid">
-        <div class="decision-card">
-          <div class="decision-card-label">Strongest pillar</div>
-          <div class="decision-card-value">${snap.strongest.p.name}</div>
-        </div>
-        <div class="decision-card">
-          <div class="decision-card-label">First upgrade</div>
-          <div class="decision-card-value">${snap.upgrade.p.name}</div>
-        </div>
-        <div class="decision-card">
-          <div class="decision-card-label">One action this week</div>
-          <div class="decision-card-note decision-card-action">${snap.action}</div>
-        </div>
-      </div>
-    </section>`;
+    <p class="community-line">Doing this alone is hard. If you'd rather have company, there's a community of people working on the same things - <a class="community-link" href="https://reskillrebels.com" target="_blank" rel="noopener">come find your way through it with others</a>.</p>`;
 }
 
 function renderResultsToolbar(){
@@ -802,7 +854,8 @@ function showResults(){
     'Radar chart of your five pillar scores out of ' + CONFIG.scale.max + ': ' +
     CONFIG.pillars.map(p => p.name + ' ' + avgs[p.key].toFixed(1)).join(', ') + '.');
 
-  renderDecisionSnapshot(avgs);
+  renderStartHere(avgs);   // rung 1
+  renderCommunity();       // rung 3
   renderResultsToolbar();
 
   const ctx = document.getElementById('radarChart').getContext('2d');
@@ -862,10 +915,14 @@ function showResults(){
       <div class="share-status hidden" id="share-status" role="status" aria-live="polite"></div>
     </div>`;
   document.getElementById('overall-shape-note').innerHTML =
-    `<div class="profile-desc" style="text-align:center;margin:-0.4rem 0 1.4rem;">${shapeNote(avgs)}</div>`;
+    `<div class="profile-desc" style="text-align:center;margin:-0.4rem 0 0.45rem;">${shapeNote(avgs)}</div>` +
+    `<div class="strongest-line">Your strongest right now: ${snap.strongest.p.name}.</div>`;
 
+  // rung 2: the rest, demoted. The pillar rung 1 picked is left out, so the
+  // reader is not handed the same choice twice. Balanced results keep all five.
+  const featuredKey = isBalanced(snap) ? null : snap.upgrade.p.key;
   let html = '';
-  CONFIG.pillars.forEach(p => {
+  CONFIG.pillars.filter(p => p.key !== featuredKey).forEach(p => {
     const band = bandFor(avgs[p.key]);
     const rep = (CONFIG.reports[p.key] && CONFIG.reports[p.key][band.id]) || { read:'', nextStep:'' };
     const compHTML = componentRowsHTML(p.key);
@@ -891,7 +948,12 @@ function showResults(){
       </svg>
       <span>Click here to expand</span>
     </div>`;
-  document.getElementById('pillar-results').innerHTML = note + html;
+  const rung2Header = `
+    <div class="rung2-header">
+      <div class="rung2-kicker">When you're ready</div>
+      <div class="rung2-title">Explore another pillar.</div>
+    </div>`;
+  document.getElementById('pillar-results').innerHTML = rung2Header + note + html;
 
   const dc = document.getElementById('disclaimer');
   if (dc) dc.textContent = CONFIG.disclaimer;

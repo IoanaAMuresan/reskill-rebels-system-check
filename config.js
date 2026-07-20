@@ -18,7 +18,7 @@ const CONFIG = {
     { id: "b1", label: "v1 - Installing",  upTo: 1.75, pct: 25 },
     { id: "b2", label: "v2 - Configuring", upTo: 2.5,  pct: 50 },
     { id: "b3", label: "v3 - Optimising",  upTo: 3.25, pct: 75 },
-    { id: "b4", label: "v4 - Integrating", upTo: 4.0,  pct: 100 }
+    { id: "b4", label: "v4 - Integrating", upTo: 4.0,  pct: 90 }
   ],
 
   /* ---- QUESTIONS: FINAL - from Ioana's build file. One per sub-point.
@@ -532,7 +532,7 @@ const CONFIG = {
     { name: "Getting Started",   upTo: 1.9, desc: "You're solid and experienced, but the upgrade hasn't really started yet. The good news: how you work is pretty consistent, which makes the starting points easy to spot. One component at a time. Not glamorous, but it's the thing that actually works." },
     { name: "Settling In",       upTo: 2.6, desc: "You're finding your way into the change - past wondering whether it applies to you, not yet at the point where it runs itself. This is the stretch where deliberate beats natural (annoying, and also true). Keep going; this is exactly where it starts to click." },
     { name: "Building Momentum", upTo: 3.3, desc: "Most of your system is running well, and you're running it on purpose rather than on habit. What's left is the under-the-hood work: the parts you've never had to think about. Which is precisely why they're the ones that'll surprise you." },
-    { name: "Running Strong",    upTo: 4.0, desc: "Your system is in good shape across the board. Which doesn't mean the upgrade is done - it means it changes shape. Less about installing what's missing, more about keeping it sharp for when the ground moves again. And boy, will it." }
+    { name: "Running Strong",    upTo: 4.0, desc: "Your system is running well, with real range and consistency to it. Which doesn't mean the upgrade is done - it means it changes shape. Less about installing what's missing, more about keeping it sharp for when the ground moves again. And boy, will it." }
   ],
 
   spread: { gapThreshold: 1.0 },

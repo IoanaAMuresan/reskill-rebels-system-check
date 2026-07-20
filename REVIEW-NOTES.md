@@ -496,3 +496,44 @@ Profiles: the only instance ("Active Upgrader ... the quieter work") is removed 
 In the questions array (reader-facing but OFF-LIMITS to edit per the working agreement - listed for completeness only, for a future questions pass): line 126 "The **quiet** voices and the tricky group dynamics"; line 193 "should be allowed to die **quietly**"; line 279 "**quieting** it works maybe half the time".
 
 Count: ~24 instances in editable copy (components/reports), plus 3 in question options (off-limits). Several are load-bearing and probably right (c19 b3 "quiet stretches", c38 b2 "a quiet thought") - hence list-only, your call per line.
+
+### Part 2 - the three-rung results page (Option A, built)
+
+New reading order on the results screen (was: snapshot -> radar -> profile -> shape -> five equal cards):
+
+1. profile badge -> shape note -> **rung 1 "Start here"** (all above the radar)
+2. radar
+3. **rung 2** - "When you're ready / Explore another pillar." + the other four pillar cards
+4. **rung 3** - the community line
+5. email capture, result actions (unchanged)
+
+**Rung 1** (`renderStartHere`, `app.js`). Absorbs the old decision snapshot - `renderDecisionSnapshot` and the `decision-snapshot-container` div are gone, along with the Strongest / First upgrade / One action three-card grid. Structure: kicker "Start here", headline "`<pillar>` - specifically, `<component>`.", the lowest component's own band text, the action, then "Just this one. The rest can wait."
+- Frame = lowest pillar (`upgradeSnapshot`). Specific = lowest component in that pillar (new `lowestComponentIn`).
+- **Ties: first in config order.** Implemented with a strict `<` comparison so the earliest component wins, which keeps a shared result reproducible.
+- **Balanced** (`isBalanced`, new single source of truth: strongest minus lowest `< spread.gapThreshold`): headline swaps to "Your system's pretty even - no single weak spot." / "Pick the one that pulls you.", and no pillar is pulled out, so rung 2 keeps all five. Verified both paths.
+
+**Rung 2.** Header added; the pillar rung 1 already named is filtered out so the reader is not handed the same choice twice (four cards in the uneven case, five when balanced). Demoted with lighter panel background and border only - **text contrast deliberately untouched**, since dimming body copy would hurt readability and accessibility.
+
+**Rung 3.** The community sentence verbatim. Rendered as a real `<a>` on the closing clause pointing at the general site, so it is keyboard focusable now and carries `:focus-visible` styling consistent with the other links - you only need to change the `href` when the destination exists.
+
+Also changed: `focusPillarCard` now falls back to scrolling to rung 1 when the clicked radar pillar has no card (previously it silently did nothing, which would have been a dead click on the rung-1 pillar).
+
+Verified live at `?demo=results`: uneven path (rung 1 = Tech Fluency + Digital Skills & Tooling, four cards in rung 2), balanced path (copy swap, five cards), no console errors, mobile 375px, community link focusable, print classes extended to the new text.
+
+#### Flags on Part 2 (decisions for you)
+
+- **Fix 1 is not actually in.** Components have no action field at all - only `bands.b1-b4` text. So "the action shown is the lowest component's action" cannot be honoured yet: rung 1 currently falls back to the **pillar's** step. I did NOT invent 37 component actions (out of scope, and your voice). The slot is wired - `lowestComponentIn` reads `comp.actions[band.id]` and prefers it the moment it exists - so writing those lines is the only remaining work to complete Fix 1.
+- **Component labels read long and shouty in the headline.** Your example was "Sustainability - specifically, how you recover", which is warm and plain. The real component names are formal: the demo renders "TECH FLUENCY - SPECIFICALLY, DIGITAL SKILLS & TOOLING." (three lines on mobile), and 1.4 would render "COGNITIVE REFRAMING / PSYCHOLOGICAL FLEXIBILITY". Two options: a short plain-language label per component (37 short lines, your voice), or drop the headline's uppercase for the component half. Flagging rather than guessing.
+- **"Strongest pillar" is no longer stated in text.** It was one of the three snapshot cards; absorbing the snapshot removed it. The radar still shows it, and per-pillar "Running strong: X" still appears inside the expanded cards. Say the word if you want a half-line back next to the profile.
+- **"No accordion" interpretation.** I read that as: rungs 2 and 3 are not gated behind a "show me the rest" click - they are simply present and quieter, which is what is built. The four pillar cards keep their existing tap-to-expand component detail, since the brief said to keep the cards with their reads and steps and that behaviour predates this change. If you meant that drill-down should go too, it is a one-line removal.
+- **Class naming.** Rung 1 reuses `.decision-snapshot` (plus a new `.start-here`) so the existing print stylesheet keeps working untouched. The name is now semantically stale; renaming it properly would mean touching the print block, so I left it.
+
+#### Four fixes applied before committing Part 2
+
+1. **Headline casing.** The pillar stays uppercase; the component half now renders in sentence case via a `.start-component` span (`text-transform: none`). Renders as "TECH FLUENCY - specifically, Digital skills & tooling."
+   New `sentenceCaseLabel()` does the casing **with an acronym guard**, because a naive lowercase would have turned "4.3 AI Literacy" into "Ai literacy". Verified: "AI literacy", "Trust-building & presence", "Digital skills & tooling", "Cognitive reframing / psychological flexibility". (Short plain labels remain your later copy job; this just stops the shouting.)
+2. **Strongest line restored.** "Your strongest right now: `<pillar>`." added as a quiet muted line directly under the shape note, inside the profile block. Resolves the earlier flag about strongest being dropped from text.
+3. **Top band capped.** `bands.b4.pct` 100 -> 90, so no pillar bar ever fills completely. This is a display percentage, not a threshold - `upTo` values and scoring are untouched. It applies to all three bar render sites at once (pillar cards, pillar result screen, component rows). Resolves the "reads as finished" flag against the ongoing profile names.
+4. **"Running Strong" description.** "in good shape across the board" -> "Your system is running well, with real range and consistency to it." Keeps the level claim, drops the balance claim, so the earlier rule-120 flag is resolved. Noting for your final pass: "range and consistency" still gestures faintly at breadth, so if you want it purely level-only, that is the phrase to look at.
+
+Verified after the fixes: uneven and balanced paths, no console errors, max rendered bar width 90%, community link still focusable.
