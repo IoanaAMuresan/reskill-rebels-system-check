@@ -440,3 +440,59 @@ Current results page, one screen, top to bottom: toolbar -> decision snapshot ("
 **Recommendation:** Option A - single page, strong hierarchy. Rung 1 = lowest-pillar frame + lowest-component action, absorbing the snapshot; balanced-case copy swap; radar and demoted rungs 2-4 below; profile fused with the gap-naming shape note; community line quiet at the bottom. Lowest cost, reuses every existing computation, no new state machine or radar-relayout risk. A true two-visit flow is a deliberate v2 if rung 1 proves out.
 
 Open calls for you (interaction is yours): (1) headline granularity - pillar frame with component action, as recommended, or lead with the component; (2) rungs 2-4 collapsed behind a click vs shown but visually demoted; (3) the community line wording, which is yours to write (I would only slot it).
+
+---
+
+## Profiles + three-rung build brief
+
+Starting commit: `6f2bcdf`.
+
+### Part 1 - profile names + descriptions (implemented)
+
+Replaced all four names and descriptions in `config.js` `profiles` (verbatim from brief). `upTo` values unchanged (1.9 / 2.6 / 3.3 / 4.0); no scoring touched. The results badge (`app.js`) and `preview.html` both render from `CONFIG.profiles`, so this one edit updates every reader-facing surface. Verified in preview: "Getting Started · 1.0 - 1.9", "Settling In · 1.9 - 2.6", "Building Momentum · 2.6 - 3.3", "Running Strong · 3.3 - 4.0".
+- Old names were also present in `system-check.html` - the archived pre-split monolith, not deployed. Left untouched intentionally.
+- Side effect worth noting: the old "Active Upgrader" description carried "the quieter work"; the new "Building Momentum" copy replaces it with "the under-the-hood work", so one "quiet" instance is removed by this pass (see quiet-sweep list).
+
+### Flags from Part 1 (flag, don't fix)
+
+- **Rule 120 tension in "Running Strong".** "Your system is in good shape across the board" reads as a balance claim, but profiles are assigned on the overall average alone (COPY-RULES rule 120: profiles describe the level, not the balance). Someone at 4/4/4/4/2.5 averages ~3.7 and lands in Running Strong while clearly NOT even "across the board". Settled copy, so left as written - flagging because it is exactly the case rule 120 warns about. Easy softening if you want it: "in good shape" without "across the board".
+- **"Done"-implying UI at the top tier** (you asked me to flag anything that contradicts "none should imply finished"):
+  - The pillar bar fills to **100% width at band b4** (`bands` pct: b4 = 100), so a top-band pillar shows a completely full bar - reads as "complete". The band ladder also tops out at "v4 - Integrating" at 100%.
+  - The hub marks answered pillars with a `done` CSS class (`app.js` ~181). That one is fine in meaning - it tracks "you've answered these questions", not "you've mastered it" - but the word plus a full bar can blur. Nothing changed; noting so you can decide whether the top band should read as e.g. 90% rather than a maxed bar.
+
+### Part 3 - the "quiet" sweep (list only, nothing changed)
+
+Every reader-facing instance of quiet / quietly / quieter in `config.js`, by line and phrase, for you to vary case by case. Grouped by section. **None changed in this pass.**
+
+Component band texts (`components.*`):
+- c11 b4 (305): "precise, confident, and **quietly** out of date."
+- c15 b2 (323): "the theory goes **quiet**."
+- c17 b2 (333): "left alone, thinking is where it **quietly** ends."
+- c19 b3 (344): "in the **quiet** stretches it still earns its keep."
+- c19 b4 (345): "different ones have **quietly** taken over the decisions."
+- c21 b2 (350): "the effort **quietly** redirects into building your counter-argument."
+- c25 b2 (370): "The **quiet** voices and the trickier dynamics."
+- c26 b4 (372): "practised inclusion can **quietly** become procedure."
+- c31 b4 (389): "work that **quietly** holds things together."
+- c32 b2 (392): "which **quiet** thing is about to become loud."
+- c36 b1 (411): "\"Not my role\" is doing **quiet** work in that sentence."
+- c36 b2 (412): "the preparation ... has **quietly** become the activity itself."
+- c38 b2 (422): "a **quiet** thought shows up: what if we're looking at this wrong?"
+- c41 b3 (440): "where these tools are strong, where they **quietly** lie."
+- c45 b4 (461): "it **quietly** funds everything else."
+- c51 b4 (468): "an item on it **quietly** becomes negotiable again."
+- c52 b2 (481): "**Quieting** it works about half the time ... you can't **quiet** a voice you haven't learned to hear." (two)
+- c52 b4 (483): "There's a **quieter** dividend too."
+- c54 b4 (493): "That understanding is a **quiet** form of security."
+
+Pillar reports (`reports.*`):
+- mindset b4 read (503): "it runs **quietly** - you don't have to think about it ... the things that **quietly** go out of date." (two)
+- humanEdge b1 nextStep (506): "right before someone goes **quiet**."
+- humanEdge b3 nextStep (508): "who'll dominate, who'll go **quiet**."
+- techFluency b4 read (521): "the first thing to go **quiet** when you get busy."
+
+Profiles: the only instance ("Active Upgrader ... the quieter work") is removed by Part 1's new "Building Momentum" copy.
+
+In the questions array (reader-facing but OFF-LIMITS to edit per the working agreement - listed for completeness only, for a future questions pass): line 126 "The **quiet** voices and the tricky group dynamics"; line 193 "should be allowed to die **quietly**"; line 279 "**quieting** it works maybe half the time".
+
+Count: ~24 instances in editable copy (components/reports), plus 3 in question options (off-limits). Several are load-bearing and probably right (c19 b3 "quiet stretches", c38 b2 "a quiet thought") - hence list-only, your call per line.
